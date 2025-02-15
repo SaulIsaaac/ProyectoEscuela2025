@@ -1,0 +1,209 @@
+/* Estilo general para el cuerpo de la página */
+body {
+  background-color: gray; /* Color de fondo gris para toda la página */
+}
+
+/* Estilo para centrar el formulario y el contenedor */
+.form-container {
+  display: flex; /* Usamos Flexbox para distribuir los elementos */
+  justify-content: center; /* Centra el formulario horizontalmente */
+  align-items: center; /* Centra el formulario verticalmente */
+  height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana */
+  gap: 20px; /* Espacio entre el formulario y el cuadro de la imagen */
+}
+
+/* Estilo para el formulario */
+.form {
+  width: 100%; /* El formulario ocupa el 100% del ancho disponible */
+  max-width: 800px; /* El formulario no puede exceder los 800px de ancho */
+  background-color: #fff; /* Color de fondo blanco para el formulario */
+  padding: 20px; /* Espaciado interno del formulario */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+  border: 2px solid black; /* Contorno negro */
+  position: relative;
+  left: 100px; /* Mueve el formulario 100px desde el borde izquierdo */
+}
+
+/* Estilo del título dentro del formulario */
+.form h2 {
+  text-align: center; /* Centra el texto */
+  font-size: 1.8rem; /* Tamaño de fuente grande */
+  margin-bottom: 20px; /* Espaciado debajo del título */
+  color: #333; /* Color del texto */
+}
+
+/* Estilo para las filas del formulario */
+.form-row {
+  display: flex; /* Usamos Flexbox para alinear los elementos */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+  gap: 20px; /* Espacio entre los elementos dentro de la fila */
+}
+
+/* Estilo para los grupos de formulario (inputs, select, etc.) */
+.form-group {
+  margin-bottom: 15px; /* Espaciado debajo de cada grupo */
+  flex: 1; /* Los grupos ocupan el 100% del ancho disponible */
+  min-width: 200px; /* Asegura que el grupo no sea más pequeño que 200px */
+}
+
+/* Estilo de las etiquetas dentro de los grupos de formulario */
+.form-group label {
+  font-size: 1rem; /* Tamaño de fuente de la etiqueta */
+  color: #333; /* Color del texto */
+  display: block; /* Hace que la etiqueta ocupe toda la línea */
+  margin-bottom: 5px; /* Espaciado debajo de la etiqueta */
+}
+
+/* Estilo de los campos de entrada (input, select, textarea) */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; /* Los campos ocupan todo el ancho disponible */
+  padding: 10px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño de fuente */
+  border: 1px solid #ccc; /* Borde gris */
+  border-radius: 5px; /* Bordes redondeados */
+  box-sizing: border-box; /* Incluye el padding en el tamaño total */
+  transition: border-color 0.3s; /* Transición suave para el cambio de color del borde */
+}
+
+/* Estilo cuando el campo de entrada tiene foco (cuando el usuario hace clic en él) */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #007BFF; /* Cambia el borde a azul cuando está enfocado */
+  outline: none; /* Elimina el contorno predeterminado */
+}
+
+/* Estilo de los botones dentro del formulario */
+.button-container {
+  display: flex; /* Usa Flexbox para alinear los botones */
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/* Estilo general para los botones de envío y reinicio */
+.submit-btn,
+.reset-btn {
+  width: 48%; /* Cada botón ocupa la mitad del ancho disponible */
+  padding: 15px; /* Tamaño del botón */
+  font-size: 1.2rem; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor a mano cuando pasa sobre el botón */
+  transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+  border: none; /* Elimina el borde predeterminado */
+}
+
+/* Estilo para el botón de envío */
+.submit-btn {
+  background-color: #007BFF; /* Fondo azul */
+  color: white; /* Color blanco para el texto */
+}
+
+/* Estilo del hover en el botón de envío */
+.submit-btn:hover {
+  background-color: #27ae60; /* Cambia el color a verde cuando el mouse pasa sobre el botón */
+}
+
+/* Estilo para el botón de reinicio */
+.reset-btn {
+  background-color: #f1f1f1; /* Fondo gris claro */
+  color: #333; /* Color de texto gris oscuro */
+  border: 2px solid #ccc; /* Borde gris */
+}
+
+/* Estilo del hover en el botón de reinicio */
+.reset-btn:hover {
+  background-color: #e5e5e5; /* Cambia el fondo a un gris más oscuro */
+}
+
+/* Estilo del cuadro para la imagen */
+.image-container {
+  width: 450px; /* Ancho del cuadro de imagen */
+  height: 300px; /* Alto del cuadro */
+  background-color: #f9f9f9; /* Fondo gris claro */
+  border: 2px dashed #ccc; /* Borde gris y punteado */
+  padding: 15px; /* Espaciado dentro del cuadro */
+  border-radius: 8px; /* Bordes redondeados */
+  display: flex; /* Usa Flexbox para centrar la imagen */
+  justify-content: center; /* Centra la imagen horizontalmente */
+  align-items: center; /* Centra la imagen verticalmente */
+  text-align: center; /* Centra el texto */
+  position: relative; /* Necesario para la posición del texto placeholder */
+  margin-left: 150px; /* Mueve el cuadro 150px desde el borde izquierdo */
+}
+
+/* Estilo para el texto placeholder dentro del cuadro de la imagen */
+.image-placeholder {
+  position: absolute; /* Permite que el texto se sitúe encima de la imagen */
+  color: #888; /* Color gris claro */
+  font-size: 1rem; /* Tamaño de fuente pequeño */
+  pointer-events: none; /* Impide que el texto interfiera con la selección del archivo */
+  z-index: 2; /* Asegura que el texto esté sobre la imagen */
+}
+
+/* Estilo para la imagen cargada */
+#vehicle-image {
+  display: none; /* Inicialmente la imagen está oculta */
+  max-width: 100%; /* Asegura que la imagen ocupe el tamaño máximo posible */
+  max-height: 100%; /* Limita la altura */
+  object-fit: contain; /* Mantiene la relación de aspecto */
+  z-index: 1; /* Imagen por debajo del texto */
+}
+
+/* Estilo para el input type="file" */
+input[type="file"] {
+  width: 100%; /* El campo de archivo ocupa todo el ancho */
+  height: 100%; /* El campo de archivo ocupa toda la altura */
+  opacity: 0;  /* Hace invisible el campo para que no sea visible */
+  position: absolute; /* Coloca el campo sobre el área de la imagen */
+  top: 0;
+  left: 0;
+  cursor: pointer; /* Cursor en forma de puntero para indicar que se puede hacer clic */
+}
+
+
+/* Estilo personalizado para el checkbox */
+.checkbox-container {
+  display: flex; /* Alinea el checkbox y la etiqueta en una fila */
+  align-items: center; /* Alinea verticalmente los elementos */
+  gap: 10px; /* Espacio entre el checkbox y la etiqueta */
+}
+
+/* Estilo del checkbox */
+.checkbox-container input[type="checkbox"] {
+  appearance: none; /* Elimina el estilo predeterminado del checkbox */
+  width: 20px; /* Ancho del checkbox */
+  height: 20px; /* Alto del checkbox */
+  border-radius: 4px; /* Bordes redondeados */
+  border: 2px solid #ccc; /* Borde gris */
+  position: relative; /* Necesario para la posición del checkmark */
+  cursor: pointer; /* Cambia el cursor a mano */
+  transition: background-color 0.3s, border-color 0.3s; /* Transición suave para los cambios de color */
+}
+
+/* Estilo cuando el checkbox está marcado */
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #007BFF; /* Cambia el fondo a azul */
+  border-color: #007BFF; /* Cambia el borde a azul */
+}
+
+/* Estilo para el checkmark dentro del checkbox */
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: ''; /* Crea un contenido vacío para el checkmark */
+  position: absolute; /* Coloca el checkmark dentro del checkbox */
+  top: 4px; /* Ajuste de posición */
+  left: 4px; /* Ajuste de posición */
+  width: 10px; /* Ancho del checkmark */
+  height: 10px; /* Alto del checkmark */
+  background-color: 007BFF; /* Color azul */
+  border-radius: 2px; /* Bordes redondeados para el checkmark */
+}
+
+/* Estilo del texto del checkbox */
+.checkbox-container label {
+  font-size: 1rem; /* Tamaño de la fuente del texto */
+  color: #333; /* Color del texto */
+  cursor: pointer; /* Cambia el cursor a mano cuando pasa sobre el texto */
+}

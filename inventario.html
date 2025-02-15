@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario de Autos</title>
+  <link rel="stylesheet" href="styles-menu.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="inventario.css">
+</head>
+<body>
+  <!-- Menú superior -->
+  <header>
+    <nav class="top-nav">
+      <div class="auth-links">
+        <a href="login.html" onclick="logout()">Cerrar Sesión</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <div class="diagonal-container">
+    <!-- Lado izquierdo con imagen -->
+    <div class="left-side">
+      <div class="diagonal-content">
+        <div class="left-content">
+          <!-- Botón Vender -->
+          <a href="vender.html" class="vender-button">Vender</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea divisoria negra (esto ya se maneja en el CSS) -->
+    <!-- No es necesario añadir un div extra aquí para la línea divisoria -->
+
+    <!-- Lado derecho con imagen -->
+    <div class="right-side">
+      <div class="diagonal-content">
+        <div class="right-content">
+          <!-- Botón Comprar -->
+          <a href="comprar.html" class="comprar-button">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

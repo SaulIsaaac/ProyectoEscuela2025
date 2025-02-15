@@ -1,0 +1,145 @@
+/* Estilos generales para el cuerpo del documento */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Fondo gris claro */
+  color: #333; /* Color de texto predeterminado */
+}
+
+/* Fondo difuso para la página con una imagen */
+body::before {
+    content: ""; /* Creación de un pseudo-elemento */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('fotos/menuFondo.jpg') no-repeat center center/cover; /* Imagen de fondo */
+    background-size: cover; /* Ajuste de la imagen al tamaño de la pantalla */
+    filter: blur(7px); /* Efecto de difuminado sobre la imagen */
+    z-index: -1; /* Coloca la imagen detrás del contenido */
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5); /* Sombra interna para darle profundidad */
+}
+
+/* Estilos para el menú superior fijo */
+.top-nav {
+  display: flex; /* Usamos Flexbox para el diseño */
+  justify-content: flex-end; /* Alinea los elementos a la derecha */
+  padding: 15px 30px; /* Espaciado dentro del menú */
+  position: fixed; /* Fijar el menú en la parte superior */
+  width: 100%; /* El menú ocupa el 100% del ancho */
+  top: 0;
+  left: 0;
+  z-index: 100; /* Asegura que el menú se vea encima de otros elementos */
+  background-color: #333; /* Fondo oscuro */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra debajo del menú */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+}
+
+/* Estilos para los enlaces dentro del menú */
+.top-nav a {
+margin-left: 20px; /* Espaciado entre los enlaces */
+text-decoration: none; /* Elimina el subrayado predeterminado */
+color: #fff; /* Cambiar el color del texto a blanco para mayor visibilidad */
+}
+
+/* Efecto al pasar el cursor sobre los enlaces */
+.top-nav a:hover {
+  color: #007BFF;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transform: scale(1.1);
+  text-decoration: none; /* Elimina el subrayado al pasar el cursor */
+
+}
+
+
+/* Estilos para el contenedor del formulario */
+.container {
+  max-width: 500px; /* Ancho máximo para el contenedor */
+  max-height: 400px;
+  margin: 300px auto 20px; /* Centra el formulario en la página */
+  background: #fff; /* Fondo blanco */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera para el contenedor */
+}
+
+/* Estilos para el encabezado del formulario */
+h1 {
+  text-align: center; /* Centra el texto */
+  height: 100px; /* Altura fija para el encabezado */
+}
+
+/* Estilos generales para los formularios */
+form {
+  display: flex; /* Usa flexbox para el formulario */
+  flex-direction: column; /* Organiza los elementos en columna */
+  gap: 10px; /* Espaciado entre los elementos */
+}
+
+/* Estilos generales para los campos de entrada y botones */
+input, button {
+  padding: 10px; /* Espaciado interno para los campos */
+  border: 1px solid #ccc; /* Bordes ligeros */
+  border-radius: 4px; /* Bordes redondeados */
+  width: 100%; /* Asegura que el campo ocupe todo el ancho disponible */
+  box-sizing: border-box; /* Asegura que el padding no cambie el tamaño total */
+  border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Contenedor de la contraseña */
+.password-container {
+  position: relative; /* Necesario para posicionar el icono del ojo dentro del campo */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+/* Estilos para el campo de contraseña */
+input[type="password"] {
+  padding: 10px; /* Espaciado interno para el campo de contraseña */
+  border: 1px solid #ccc; /* Bordes similares a los demás campos */
+  border-radius: 4px; /* Bordes redondeados */
+  width: 100%; /* Hace que el campo de contraseña tenga el mismo tamaño */
+  box-sizing: border-box; /* Mantiene el tamaño total consistente */
+}
+
+/* Estilos para el icono de ojo */
+.eye-icon {
+  position: absolute; /* Posiciona el icono dentro del campo */
+  right: 10px; /* Posiciona el icono a la derecha dentro del campo */
+  top: 50%; /* Lo centra verticalmente */
+  transform: translateY(-50%); /* Ajusta el centrado vertical */
+  cursor: pointer; /* Mantiene el cursor en forma de mano cuando se pasa por encima */
+  user-select: none; /* Evita que se seleccione el texto del icono */
+}
+
+
+/* Estilos específicos para el botón */
+button {
+  background-color: #007BFF; /* Fondo azul para el botón */
+  color: white; /* Texto blanco */
+  cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+button:hover {
+  background-color: #0056b3; /* Fondo azul más oscuro al pasar el cursor */
+}
+
+/* Estilos para el texto de los párrafos */
+p {
+  text-align: center; /* Centra el texto en los párrafos */
+}
+
+/* Estilos para los enlaces dentro de los formularios */
+a {
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  color: #007BFF; /* Color azul para los enlaces */
+}
+
+/* Efecto al pasar el cursor sobre los enlaces */
+a:hover {
+  text-decoration: underline; /* Subraya el enlace al pasar el cursor */
+}

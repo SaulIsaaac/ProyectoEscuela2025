@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión como administrador</title>
+  <!-- Vincula los archivos CSS para estilos -->
+  <link rel="stylesheet" href="styles-menu.css">
+  <link rel="stylesheet" href="styles-login-register.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Menú de navegación superior -->
+  <div class="top-nav">
+    <div id="authLinks" class="auth-links">
+      <a href="index.html">Página Principal</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Iniciar sesión como administrador</h1>
+    <!-- Formulario para el inicio de sesión del administrador -->
+    <form id="adminLoginForm">
+      <input type="text" id="adminID" placeholder="ID de administrador" required> <!-- Campo para el ID -->
+      <input type="password" id="adminPassword" placeholder="Contraseña" required> <!-- Campo para la contraseña -->
+      <button type="submit">Iniciar sesión</button> <!-- Botón para enviar el formulario -->
+    </form>
+  </div>
+
+  <!-- Archivos JavaScript para gestionar el servidor y el inicio de sesión -->
+  <script src="admin-login.js"></script>
+</body>
+</html>

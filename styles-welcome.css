@@ -1,0 +1,90 @@
+/* Estilos para la pantalla de bienvenida */
+.welcome-page {
+    position: relative; /* Permite la manipulación de elementos absolutos dentro de este contenedor */
+    height: 100vh; /* Hace que la altura de la página ocupe toda la pantalla */
+    display: flex; /* Usamos flexbox para centrar el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    color: white; /* Color blanco para el texto */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    padding: 0 20px; /* Espaciado horizontal para evitar que el contenido se pegue a los bordes */
+    flex-direction: column; /* Organiza los elementos en una columna */
+}
+
+/* Estilos para la imagen de fondo con desenfoque */
+.welcome-page .background-image {
+    position: absolute; /* Coloca la imagen en la parte inferior de la pila de elementos */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Hace que la imagen ocupe toda la pantalla */
+    background: url('fotos/menuFondo.jpg') no-repeat center center/cover; /* La imagen cubre toda la pantalla */
+    background-size: cover; /* Asegura que la imagen ocupe toda la pantalla sin distorsionarse */
+    z-index: 0; /* Coloca la imagen detrás del contenido */
+    filter: blur(7px); /* Aplica un efecto de desenfoque */
+}
+
+/* Estilos para el overlay oscuro encima de la imagen de fondo */
+.welcome-page .overlay {
+    position: absolute; /* Coloca el overlay encima de la imagen de fondo */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Abarca toda la pantalla */
+    background: rgba(0, 0, 0, 0.4); /* Crea una capa oscura semi-transparente */
+    z-index: 1; /* Coloca el overlay encima de la imagen de fondo */
+}
+
+/* Estilos para el contenido del texto (título, párrafos y botones) */
+.welcome-page .content {
+    position: relative; /* Coloca el contenido sobre el overlay */
+    z-index: 2; /* Asegura que el contenido esté encima del overlay */
+}
+
+/* Estilos para el título de la pantalla de bienvenida */
+.welcome-page h1 {
+    font-size: 3rem; /* Tamaño grande para el título */
+    margin-bottom: 20px; /* Espaciado debajo del título */
+    font-family: 'Roboto', sans-serif; /* Fuente de tipo sans-serif */
+    letter-spacing: 2px; /* Espaciado entre las letras */
+    font-weight: bold; /* Hace que el título sea negrita */
+    color: white; /* Color blanco para el título */
+}
+
+/* Estilos para el párrafo en la pantalla de bienvenida */
+.welcome-page p {
+    font-size: 1.5rem; /* Tamaño de fuente mediano para el párrafo */
+    margin-bottom: 30px; /* Espaciado debajo del párrafo */
+    color: white; /* Color blanco para el texto */
+}
+
+/* Estilos para el contenedor de los botones */
+.buttons {
+    display: flex; /* Usamos flexbox para alinear los botones */
+    gap: 20px; /* Espaciado entre los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+}
+
+/* Estilos para los botones */
+.btn {
+    padding: 15px 30px; /* Tamaño de los botones */
+    background-color: #007BFF; /* Fondo azul para el botón */
+    color: white; /* Color blanco para el texto */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    font-size: 1.1rem; /* Tamaño de fuente adecuado para el texto del botón */
+    border-radius: 20px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición suave para efectos */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera para el botón */
+}
+
+/* Estilos para el hover (cuando el mouse pasa sobre los botones) */
+.btn:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor */
+    transform: translateY(-2px); /* Eleva el botón ligeramente */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+/* Estilos para el efecto activo (cuando se hace clic en los botones) */
+.btn:active {
+    transform: translateY(0); /* Restaura la posición del botón al hacer clic */
+}

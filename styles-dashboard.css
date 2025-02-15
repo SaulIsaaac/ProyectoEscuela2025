@@ -1,0 +1,54 @@
+/* Estilos generales del dashboard */
+.container {
+  max-width: 800px;          /* Establece un ancho máximo para el contenedor */
+  margin: 50px auto;        /* Centra el contenedor con un margen superior de 50px */
+  background: #fff;         /* Color de fondo blanco */
+  padding: 20px;            /* Espaciado interior de 20px */
+  border-radius: 8px;       /* Bordes redondeados con un radio de 8px */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra sutil alrededor del contenedor */
+}
+
+/* Estilos para los encabezados */
+h1, h2 {
+  text-align: center;       /* Centra el texto en los encabezados */
+}
+
+/* Estilos para cada elemento de auto dentro del dashboard */
+.car-item {
+  background: #f9f9f9;      /* Color de fondo gris claro para cada tarjeta de auto */
+  margin: 20px 0;           /* Margen superior e inferior de 20px */
+  padding: 15px;            /* Espaciado interno de 15px */
+  border-radius: 8px;       /* Bordes redondeados con un radio de 8px */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra ligera alrededor de cada tarjeta */
+}
+
+/* Estilos para los párrafos dentro de los elementos de auto */
+.car-item p {
+  margin: 5px 0;            /* Márgenes pequeños entre los párrafos */
+}
+
+/* Estilos generales para los botones dentro de los elementos de auto */
+.car-item button {
+  background-color: #007BFF;  /* Color de fondo azul para el botón */
+  color: white;                /* Color de texto blanco */
+  padding: 8px 15px;           /* Espaciado interno de 8px vertical y 15px horizontal */
+  border: none;                /* Elimina el borde del botón */
+  border-radius: 4px;          /* Bordes ligeramente redondeados */
+  cursor: pointer;            /* Cambia el cursor a mano para indicar interactividad */
+  margin: 5px;                 /* Espaciado de 5px entre los botones */
+}
+
+/* Estilos para el hover (cuando el usuario pasa el mouse sobre el botón) */
+.car-item button:hover {
+  background-color: #0056b3;  /* Cambia el color de fondo a un azul más oscuro al pasar el mouse */
+}
+
+/* Estilos para los botones de rechazo (con clase "reject") */
+.car-item button.reject {
+  background-color: #f44336;  /* Color de fondo rojo para el botón de rechazo */
+}
+
+/* Estilos para el hover del botón de rechazo */
+.car-item button.reject:hover {
+  background-color: #d32f2f;  /* Cambia el color de fondo a un rojo más oscuro cuando se pasa el mouse */
+}

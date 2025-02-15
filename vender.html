@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">  <!-- Establece la codificación de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Configura la visualización para dispositivos móviles -->
+  <title>Formulario de Venta</title>  <!-- Título de la página -->
+  
+  <!-- Enlaces a los archivos de estilo CSS -->
+  <link rel="stylesheet" href="styles-menu.css">  <!-- Estilos para el menú -->
+  <link rel="stylesheet" href="styles.css">  <!-- Estilos generales para la página -->
+  <link rel="stylesheet" href="vender.css">  <!-- Estilos específicos para la página de venta -->
+</head>
+<body>
+
+  <!-- Menú superior -->
+  <header>
+    <nav class="top-nav">
+      <div class="auth-links">
+        <a href="inventario.html">Menu Anterior</a>  <!-- Enlace para volver al menú anterior -->
+        <a href="login.html" onclick="logout()">Cerrar Sesión</a>  <!-- Enlace para cerrar sesión, ejecuta la función logout -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- Formulario de venta centrado -->
+  <div class="form-container">
+    <form class="form" id="sellForm" enctype="multipart/form-data" action="/submit-form" method="POST">
+      <h2>Formulario de Venta</h2>  <!-- Título del formulario -->
+
+      <!-- Fila de campos de entrada -->
+      <div class="form-row">
+        <!-- Campo para el nombre completo del vendedor -->
+        <div class="form-group">
+          <label for="nombre">Nombre Completo:</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre completo" required>
+        </div>
+
+        <!-- Campo para el correo electrónico -->
+        <div class="form-group">
+          <label for="correo">Correo Electrónico:</label>
+          <input type="email" id="correo" name="correo" placeholder="Ingresa tu correo electrónico" required>
+        </div>
+
+        <!-- Campo para el teléfono del vendedor -->
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" placeholder="Ingresa tu número de teléfono" required maxlength="10">
+        </div>
+
+        <!-- Campo para la marca del vehículo -->
+        <div class="form-group">
+          <label for="marca">Marca del Vehículo:</label>
+          <input type="text" id="marca" name="marca" placeholder="Ingresa la marca del vehículo" required>
+        </div>
+
+        <!-- Campo para el modelo del vehículo -->
+        <div class="form-group">
+          <label for="modelo">Modelo del Vehículo:</label>
+          <input type="text" id="modelo" name="modelo" placeholder="Ingresa el modelo del vehículo" required>
+        </div>
+
+        <!-- Campo para el año del vehículo -->
+        <div class="form-group">
+          <label for="año">Año del Vehículo:</label>
+          <input type="text" id="año" name="año" placeholder="Ingresa el año del vehículo" required>
+        </div>
+      </div>
+
+      <!-- Fila de campos adicionales -->
+      <div class="form-row">
+        <!-- Campo para el kilometraje del vehículo -->
+        <div class="form-group">
+          <label for="kilometraje">Kilometraje:</label>
+          <input type="text" id="kilometraje" name="kilometraje" placeholder="Ingresa el kilometraje del vehículo" required>
+        </div>
+
+        <!-- Selector para tipo de transmisión -->
+        <div class="form-group">
+          <label for="transmision">Tipo de Transmisión:</label>
+          <select id="transmision" name="transmision" required>
+            <option value="estandar">Estandar</option>
+            <option value="automatica">Automática</option>
+          </select>
+        </div>
+
+        <!-- Checkbox para indicar si el vehículo es eléctrico -->
+        <div class="form-group checkbox-container">
+            <input type="checkbox" id="electric" name="electric">  
+            <label for="electric">¿Es el auto eléctrico?</label>
+        </div>
+
+        <!-- Campo para la descripción del vehículo -->
+        <div class="form-group">
+          <label for="descripcion">Descripción del Vehículo:</label>
+          <textarea id="descripcion" name="descripcion" placeholder="Ingresa una descripción del vehículo" required></textarea>
+        </div>
+
+        <!-- Campo para el precio de venta del vehículo -->
+        <div class="form-group">
+          <label for="precio">Precio de Venta:</label>
+          <input type="text" id="precio" name="precio" placeholder="Ingresa el precio de venta" required>
+        </div>
+      </div>
+
+      <!-- Contenedor para los botones de enviar y resetear -->
+      <div class="button-container">
+        <button type="submit" class="submit-btn">Enviar</button>  <!-- Botón para enviar el formulario -->
+        <button type="reset" class="submit-btn">Reset</button>  <!-- Botón para resetear el formulario -->
+      </div>
+
+    </form>
+
+    <!-- Sección para cargar la imagen del vehículo -->
+    <div class="form-group">
+      <div class="image-container">
+          <span class="image-placeholder">Haz click aquí y sube la imagen del vehículo</span>
+          <input type="file" id="imagen" name="imagen" accept="image/*" required onchange="displayImage(event)">  <!-- Campo para seleccionar una imagen -->
+          <img id="vehicle-image" alt="Imagen del vehículo" style="display:none;">  <!-- Imagen cargada que se muestra después de la selección -->
+      </div>
+    </div>
+    
+    <!-- Notificación de éxito al enviar el formulario -->
+    <div id="alert" class="alert" style="display:none;">
+      <p>Revisaremos tu solicitud, cualquier duda te mandaremos un correo.</p>
+      <button onclick="closeAlert()">Cerrar</button>  <!-- Botón para cerrar la notificación -->
+    </div>
+
+  </div>
+
+  <!-- Incluir archivo de script.js para la funcionalidad de JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

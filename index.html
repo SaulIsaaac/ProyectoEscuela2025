@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma Venta de Autos Usados</title>
+  <!-- Vincula los archivos CSS para los estilos -->
+  <link rel="stylesheet" href="styles-menu.css">
+  <link rel="stylesheet" href="styles-welcome.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Pantalla de bienvenida con una imagen de fondo y superposición -->
+  <section class="welcome-page">
+    <!-- Imagen de fondo, debe estar dentro de un elemento 'img' o usar background CSS -->
+    <div class="background-image" style="background-image: url('fotos/menuFondo.jpg');"></div> 
+    <div class="overlay"></div> 
+    <div class="content">
+      <h1>Bienvenido a la Plataforma de Venta de Autos Usados</h1>
+      <p>Compra o vende autos de segunda mano de manera segura y fácil.</p>
+      <p>Para empezar, selecciona una opción de las siguientes:</p>
+      <div class="buttons">
+        <!-- Botones para iniciar sesión o registrarse -->
+        <a href="login.html" class="btn">Iniciar sesión</a>
+        <a href="register.html" class="btn">Registrarse</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menú superior con enlaces a las páginas de inicio de sesión y registro -->
+  <div class="top-nav">
+    <div id="authLinks" class="auth-links">
+      <a href="login.html">Iniciar Sesión</a>
+      <a href="register.html">Registrarse</a>
+      <!-- Enlace adicional para iniciar sesión como administrador -->
+      <a href="admin-login.html">Iniciar sesión como administrador</a>
+    </div>
+  </div>
+
+  <!-- Archivos JavaScript que gestionan las interacciones y el servidor -->
+  <script src="script.js"></script>
+</body>
+</html>

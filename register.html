@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrarse</title>
+  <link rel="stylesheet" href="styles-menu.css">
+  <link rel="stylesheet" href="styles-login-register.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Menú superior con enlace a la página principal -->
+  <div class="top-nav">
+    <div id="authLinks" class="auth-links">
+      <a href="index.html">Página Principal</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Registrarse</h1>
+    <!-- Formulario de registro -->
+    <form id="registerForm">
+      <!-- Campo para ingresar el nombre completo -->
+      <input type="text" id="fullName" placeholder="Nombre Completo" required>
+      <!-- Campo para ingresar el número de teléfono -->
+      <input type="tel" id="phoneNumber" placeholder="Número de teléfono" required maxlength="10">
+      <!-- Campo para ingresar el correo electrónico -->
+      <input type="email" id="newEmail" placeholder="Correo electrónico" required>
+      <!-- Contenedor para la contraseña, con opción para mostrar u ocultar -->
+      <div class="password-container">
+        <input type="password" id="newPassword" placeholder="Contraseña" required>
+        <!-- Icono de ojo para alternar la visibilidad de la contraseña -->
+        <span id="togglePasswordRegister" class="eye-icon">&#128065;</span>
+      </div>
+      <!-- Botón para enviar el formulario -->
+      <button type="submit">Registrarse</button>
+    </form>
+    <!-- Enlace para redirigir a la página de inicio de sesión si ya tiene cuenta -->
+    <p>¿Ya tienes cuenta? <a href="login.html">Iniciar sesión</a></p>
+  </div>
+
+  <div id="alert" style="display: none;">
+    <p></p>
+    <button onclick="closeAlert()">Cerrar</button>
+  </div>
+  
+
+  <!-- Scripts para funcionalidad de la página -->
+  <script src="script.js"></script>
+</body>
+</html>

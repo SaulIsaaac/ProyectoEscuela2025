@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="styles-menu.css">  <!-- Hoja de estilo para el menú superior -->
+  <link rel="stylesheet" href="styles-login-register.css">  <!-- Estilos específicos para la página de login y registro -->
+  <link rel="stylesheet" href="styles.css">  <!-- Estilos generales para la página -->
+</head>
+<body>
+  <!-- Menú superior -->
+  <div class="top-nav">
+    <div id="authLinks" class="auth-links">
+      <a href="index.html">Página Principal</a>  <!-- Enlace a la página principal -->
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Iniciar Sesión</h1>
+    <!-- Formulario de inicio de sesión -->
+    <form id="loginForm">
+      <!-- Campo para ingresar el correo electrónico -->
+      <input type="email" id="username" placeholder="Correo Electrónico" required>
+      
+      <div class="password-container">
+        <!-- Campo para ingresar la contraseña -->
+        <input type="password" id="password" placeholder="Contraseña" required>
+        
+        <!-- Icono de ojo para mostrar/ocultar la contraseña -->
+        <span id="togglePassword" class="eye-icon">&#128065;</span> 
+      </div>
+      
+      <!-- Botón para enviar el formulario -->
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+    
+    <!-- Enlace para usuarios que no tienen cuenta -->
+    <p>¿No tienes cuenta? <a href="register.html">Registrarse</a></p>
+  </div>
+  
+
+  <!-- Archivos JavaScript -->
+  <script src="script.js"></script>  <!-- Archivo JS con lógica adicional para la página -->
+</body>
+</html>

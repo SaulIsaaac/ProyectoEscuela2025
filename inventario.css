@@ -1,0 +1,143 @@
+/* Estilo general de la página */
+body, html {
+  margin: 0;  /* Elimina los márgenes predeterminados */
+  padding: 0; /* Elimina el padding predeterminado */
+  height: 100%; /* Asegura que el alto de la página ocupe todo el viewport */
+  overflow: hidden; /* Evita el scroll */
+  font-family: Arial, sans-serif; /* Establece la fuente de la página */
+}
+
+/* Contenedor principal con fondo diagonal */
+.diagonal-container {
+  width: 100%; /* Ancho completo */
+  height: 100vh; /* Altura completa de la ventana del navegador */
+  position: relative; /* Posiciona los elementos dentro de este contenedor */
+  display: flex; /* Establece un diseño flexible */
+}
+
+/* Estilo para la mitad izquierda con imagen de fondo */
+.left-side {
+  background-image: url('fotos/fondoIzq.webp'); /* Imagen de fondo */
+  background-size: cover; /* Cubre todo el área del contenedor */
+  background-position: center; /* Centra la imagen */
+  position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+  left: 0; /* Se posiciona en la parte izquierda */
+  width: 50%; /* Ocupa el 50% del ancho */
+  height: 100%; /* Ocupa el 100% de la altura */
+}
+
+/* Estilo para la mitad derecha con imagen de fondo */
+.right-side {
+  background-image: url('fotos/fotoDer1.jpg'); /* Imagen de fondo */
+  background-size: cover; /* Cubre todo el área del contenedor */
+  background-position: center; /* Centra la imagen */
+  position: absolute; /* Posicionamiento absoluto dentro del contenedor */
+  right: 0; /* Se posiciona en la parte derecha */
+  width: 50%; /* Ocupa el 50% del ancho */
+  height: 100%; /* Ocupa el 100% de la altura */
+}
+
+/* Línea divisoria vertical entre las dos mitades */
+.diagonal-container:before {
+  content: ''; /* Crea un pseudo-elemento vacío */
+  position: absolute; /* Posicionamiento absoluto */
+  top: 0; /* Se coloca en la parte superior */
+  left: 50%; /* Se coloca a la mitad de la pantalla */
+  width: 10px; /* Ancho de la línea divisoria */
+  height: 100%; /* Altura completa de la página */
+  background-color: black; /* Color negro para la línea */
+  z-index: 1; /* Establece el orden de apilamiento */
+}
+
+/* Contenido centrado dentro de la sección diagonal */
+.diagonal-content {
+  position: absolute; /* Posicionamiento absoluto */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  display: flex; /* Utiliza flexbox para centrar el contenido */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  text-align: center; /* Centra el texto */
+  z-index: 2; /* Asegura que el contenido esté encima de la línea divisoria */
+}
+
+/* Estilo del encabezado */
+h1 {
+  margin: 0; /* Elimina márgenes */
+  font-size: 2rem; /* Establece un tamaño de fuente grande */
+}
+
+/* Contenedor de botones con separación */
+.button-container {
+  position: absolute; /* Posicionamiento absoluto */
+  bottom: 10%; /* Coloca los botones al 10% de la altura desde el fondo */
+  width: 100%; /* Ancho completo */
+  display: flex; /* Utiliza flexbox para distribuir los botones */
+  justify-content: space-between; /* Distribuye los botones en los extremos */
+  padding: 0 15%; /* Añade espacio a los lados */
+  z-index: 2; /* Asegura que los botones estén por encima del fondo */
+}
+
+/* Estilo para el botón de Vender */
+.vender-button {
+  padding: 10px 20px; /* Espaciado dentro del botón */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  font-size: 50px; /* Establece un tamaño de fuente grande */
+  border-radius: 20px; /* Redondea los bordes */
+  color: rgb(255, 255, 255); /* Color del texto blanco */
+  background-color:  #007BFF; /* Color de fondo azul */
+  transition: background-color 0.3s ease; /* Efecto de transición al pasar el cursor */
+}
+
+/* Efecto hover para el botón de Vender */
+.vender-button:hover {
+  background-color: #27ae60; /* Cambia el color de fondo al pasar el cursor */
+}
+
+/* Estilo para el botón de Comprar */
+.comprar-button {
+  padding: 10px 20px; /* Espaciado dentro del botón */
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  font-size: 50px; /* Establece un tamaño de fuente grande */
+  border-radius: 20px; /* Redondea los bordes */
+  color: white; /* Color del texto blanco */
+  background-color:  #007BFF; /* Color de fondo azul */
+  transition: background-color 0.3s ease; /* Efecto de transición al pasar el cursor */
+}
+
+/* Efecto hover para el botón de Comprar */
+.comprar-button:hover {
+  background-color: #27ae60; /* Cambia el color de fondo al pasar el cursor */
+}
+
+/* Estilo del texto debajo del botón Vender */
+.vender-text {
+  margin-top: 10px; /* Espaciado arriba del texto */
+  font-size: 1.1rem; /* Tamaño de fuente moderado */
+  color: rgb(255, 255, 255); /* Color del texto blanco */
+}
+
+/* Estilo del texto arriba del botón Comprar */
+.comprar-text {
+  margin-bottom: 10px; /* Espaciado abajo del texto */
+  font-size: 1.1rem; /* Tamaño de fuente moderado */
+  color: rgb(255, 255, 255); /* Color del texto blanco */
+}
+
+/* Espaciado adicional en los cuadros de texto de los lados izquierdo y derecho */
+.left-content .text-box,
+.right-content .text-box {
+  margin-top: 20px; /* Espaciado en la parte superior de los cuadros de texto */
+}
+
+/* Línea divisoria vertical entre las dos mitades */
+.diagonal-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+}
