@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursales - Concesionarios</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="sucursales.css">
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header class="top-nav">
+        <ul>
+            <li><a href="menu-principal.html">Menú Anterior</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        <h1>Nuestras Sucursales</h1>
+
+        <div class="sucursales">
+
+            <!-- Sucursal 1 -->
+            <div class="sucursal">
+                <img src="fotos/carDealership1.avif" alt="Sucursal Centro">
+                <h2>Sucursal Sur</h2>
+                <p><strong>Dirección:</strong> Av. Reforma #123, Ciudad Central</p>
+                <p><strong>Teléfono:</strong> (555) 123-4567</p>
+                <p><strong>Horario:</strong> Lunes a Sábado - 9:00 AM a 7:00 PM</p>
+                <p><strong>Descripción:</strong> Nuestra sucursal más grande con más de 50 autos en exhibición.</p>
+                <button onclick="verInventario('centro')">Ver Inventario</button>
+            </div>
+
+            <!-- Sucursal 2 -->
+            <div class="sucursal">
+                <img src="fotos/carDealership2.png" alt="Sucursal Norte">
+                <h2>Sucursal Norte</h2>
+                <p><strong>Dirección:</strong> Calle Norte #456, Zona Industrial</p>
+                <p><strong>Teléfono:</strong> (555) 987-6543</p>
+                <p><strong>Horario:</strong> Lunes a Domingo - 8:00 AM a 8:00 PM</p>
+                <p><strong>Descripción:</strong> Concesionario especializado en autos seminuevos y financiamiento.</p>
+                <button onclick="verInventario('norte')">Ver Inventario</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function verInventario(sucursal) {
+            window.location.href = `comprar.html?sucursal=${sucursal}`;
+        }
+    </script>
+
+</body>
+</html>

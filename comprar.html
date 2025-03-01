@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario de Autos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="comprar.css">
+  <link rel="stylesheet" href="styles-menu.css">
+</head>
+<body>
+
+  <!-- Menú superior -->
+  <header>
+    <nav class="top-nav">
+      <div class="auth-links">
+        <a href="menu-principal.html">Menú Anterior</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Texto Inventario de Autos -->
+  <div class="page-title-container">
+    <h1 class="page-title">Inventario de Autos</h1>
+  </div>
+
+  <!-- Filtro de búsqueda -->
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar por marca o modelo">
+    <button id="searchButton" class="search-button">Buscar</button>
+    <button id="resetButton" class="reset-button">Reset</button>
+  </div>
+
+  <!-- Contenedor donde se mostrarán los autos -->
+  <div id="carsList" class="auto-container">
+    <!-- Las tarjetas de los autos aprobados se generarán dinámicamente -->
+  </div>
+
+<!-- Ventana emergente para ver detalles del auto -->
+  <div id="modal-details" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Detalles del vehículo</h2>
+      <div id="modal-body">
+        <!-- Los detalles del auto se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+<!-- Modal de Opciones de Pago -->
+<div id="payment-options-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-payment-options-modal" class="close-modal">&#10005;</span> 
+    <h2>Opciones de Pago</h2>
+    <div id="payment-options">
+      <button id="open-payment-cash-modal" class="btn-pay">
+        Pago de contado
+        <p class="small-text">EFECTIVO-TARJETA-CHEQUE</p>
+      </button>
+      <button id="open-payment-installments-modal" class="btn-pay">
+        Pagar a mensualidades
+        <p class="small-text">Financiamiento disponible a 12 o 24 meses.</p>
+      </button>
+      <button id="close-options-modal" class="btn-pay" >Volver</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for Cash Payment -->
+<div id="cash-payment-modal" class="modal-payment">
+  <div class="modal-content-payment">
+    <span id="close-cash-payment-modal" class="close-modal-payment">&#10005;</span>
+    <h2>Pago de Contado</h2>
+    <div id="payment-options">
+      <button id="cash-option" class="btn-payment">
+        Paga con efectivo
+        <p class="small-text">Realiza tu pago en efectivo.</p>
+      </button>
+      <button id="card-option" class="btn-payment">
+          Paga con Tarjeta
+        <p class="small-text">Paga con tu tarjeta de crédito o débito.</p>
+      </button>
+      <button id="cheque-option" class="btn-payment">
+        Paga con cheque 
+        <p class="small-text">Usa cheque para tu pago.</p>
+      </button>
+      <button id="cancel-cash-payment" class="btn-payment">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de Pago con Tarjeta -->
+<div id="credit-card-pay-modal" class="modal-credit-card-pay">
+  <div class="modal-content-credit-card-pay">
+    <span id="close-credit-card-pay-modal" class="close-modal-credit-card-pay">&times;</span>
+    <h2>Pago con Tarjeta</h2>
+    <form id="payment-card-form">
+      <label for="card-type">Tipo de tarjeta:</label>
+      <select id="card-type" name="card-type" required>
+        <option value="credit">Crédito</option>
+        <option value="debit">Débito</option>
+      </select>
+
+      <label for="card-brand">Marca de la tarjeta:</label>
+      <select id="card-brand" name="card-brand" required>
+        <option value="visa">Visa</option>
+        <option value="mastercard">MasterCard</option>
+      </select>
+
+      <label for="card-number">Número de tarjeta:</label>
+      <input type="text" id="card-number" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16" minlength="16" required>
+
+      <div class="expiry-date-container">
+        <!-- Campo para seleccionar el mes -->
+        <label for="expiry-month">Mes:</label>
+        <select id="expiry-month" name="expiry-month" required>
+          <option value="" disabled selected>Seleccionar mes</option>
+          <option value="01">01</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="04">04</option>
+          <option value="05">05</option>
+          <option value="06">06</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+    
+        <!-- Campo para seleccionar el año -->
+        <label for="expiry-year">Año:</label>
+        <select id="expiry-year" name="expiry-year" required>
+          <option value="" disabled selected>Seleccionar año</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+          <option value="2031">2031</option>
+          <option value="2032">2032</option>
+          <option value="2033">2033</option>
+          <option value="2034">2034</option>
+          <option value="2035">2035</option>
+        </select>
+      </div> <!-- Esta etiqueta estaba sin cerrar -->
+      
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv" maxlength="3" minlength="3" required>
+
+      <!-- Botón Pagar con tarjeta -->
+      <button type="button" id="pay-with-card-button" class="btn-pay-card">Pagar</button>
+
+      <!-- Botón Cancelar -->
+      <button type="button" id="cancel-card-payment-button" class="btn-cancel-card">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal de Confirmación de Pago -->
+<div id="payment-confirmation-modal" class="modal-payment-confirmation">
+  <div class="modal-content-payment-confirmation">
+    <span id="close-payment-confirmation-modal" class="close-modal-payment-confirmation">&times;</span>
+    <h2>Confirmación de Pago</h2>
+    <p id="confirmation-message">¿Estas seguro que quieres realizar el pago por este carro? </p>
+
+    <!-- Botones de confirmación y rechazo -->
+    <div class="modal-buttons">
+      <button type="button" id="confirm-payment" class="btn-confirm-payment">Confirmar</button>
+      <button type="button" id="reject-payment" class="btn-reject-payment">Rechazar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de Pagar a Mensualidades -->
+<div id="modal-pagar-mensualidades" class="modal">
+  <div class="modal-content">
+      <span id="close-modal-pagar-mensualidades" class="close">&times;</span>
+      <h2>Calcula tu Pago a Mensualidades</h2>
+      
+      <form id="form-pagar-mensualidades">
+          <div class="input-group">
+              <label for="enganche-input">Enganche:</label>
+              <br>
+              <input type="number" id="enganche-input" name="enganche" placeholder="Ingresa el enganche" required>
+          </div>
+          
+          <div class="input-group">
+              <label for="meses-financiacion">Meses a financiar:</label>
+              <br>
+              <select id="meses-financiacion" name="meses" required>
+                  <option value="12">12 Meses</option>
+                  <option value="24">24 Meses</option>
+              </select>
+          </div>
+
+          <button type="button" id="calcular-pago" class="btn">Calcular Pago</button>
+      </form>
+      
+      <div id="tabla-pago-mensual" class="tabla-pago">
+          <!-- La tabla se generará después de hacer clic en Calcular -->
+      </div>
+  </div>
+</div>
+
+
+  <!-- Paginación -->
+  <div id="pagination" class="pagination-container">
+    <!-- Los números de página se generarán dinámicamente con JavaScript -->
+  </div>
+
+  <!-- Script para cargar autos y manejar la paginación -->
+  <script src="comprar.js"></script>
+
+</body>
+</html>

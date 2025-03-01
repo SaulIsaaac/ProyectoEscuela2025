@@ -1,0 +1,1379 @@
+/* Estilo general para el cuerpo */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1a1a1a;  /* Gris más oscuro */
+  color: #fff;  /* Color blanco para el texto */
+}
+
+/* Estilo para el header */
+header {
+  background-color: #222;  /* Fondo oscuro para el header */
+  padding: 10px 20px;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Estilo para los enlaces de autenticación */
+.auth-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  color: #7c8b9b;
+}
+
+/* Filtro de búsqueda */
+.search-container {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 300px;
+  border: 2px solid #444;  /* Borde gris oscuro */
+  border-radius: 5px;
+  margin-right: 10px;
+  background-color: #2a2a2a; /* Fondo gris más oscuro */
+  color: #fff;  /* Texto blanco */
+}
+
+.search-button, .reset-button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  background-color: #2a2a2a;  /* Mismo color que la search bar */
+  color: white;
+  border: 2px solid #444;  /* Borde gris oscuro */
+  border-radius: 5px;  /* Bordes redondeados */
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.search-button:hover, .reset-button:hover {
+  background-color: #444;  /* Gris más oscuro al hacer hover */
+  border-color: #333;  /* Borde gris aún más oscuro al hacer hover */
+}
+
+.search-button:active, .reset-button:active {
+  background-color: #333;  /* Gris más oscuro al hacer clic */
+  border-color: #222;  /* Borde muy oscuro al hacer clic */
+}
+
+
+/* Contenedor de las tarjetas */
+.auto-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px; /* Espacio entre las tarjetas en la cuadrícula */
+  padding: 100px; /* Espacio entre el borde del contenedor y las tarjetas */
+  justify-content: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Estilo de cada tarjeta */
+.auto-card {
+  border: 2px solid #3333;
+  padding: 20px; /* Relleno interno de la tarjeta */
+  margin: 0; /* Sin margen extra alrededor de las tarjetas */
+  border-radius: 10px;
+  color: #808080; 
+  background: #2a2a2a;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 355px; /* Ancho fijo de las tarjetas */
+  opacity: 0;
+  border: 2px solid #007BFF;  /* Contorno azul que contrasta */
+  animation: fadeIn 0.5s forwards;
+}
+
+/* Imagen dentro de la tarjeta */
+.auto-card img {
+  width: 100%;
+  height: 250px; /* Ajuste de la altura */
+  object-fit: cover;
+  border-radius: 8px;
+  
+}
+
+/* Estilo del título dentro de la tarjeta */
+.auto-card h3 {
+  margin: 10px 0;
+}
+
+/* Estilo del botón dentro de la tarjeta */
+.auto-card button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.auto-card button:hover {
+  background-color: #218838;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+/* Contenedor de la paginación */
+.pagination-container {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  min-height: 50px; /* Asegura que haya un espacio adecuado */
+}
+
+/* Estilo de los botones de paginación */
+.pagination {
+  display: inline-flex; /* Hace que los botones se alineen en línea */
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination a {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  min-width: 60px; /* Mantiene el tamaño de los botones consistente */
+  text-align: center;
+  display: inline-block;
+}
+
+/* Estilo para el primer y último botón de la paginación */
+.pagination a:first-child, .pagination a:last-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.pagination-container button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #2a2a2a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.pagination-container button:hover {
+  background-color: #333;
+}
+
+/* Alineación de la paginación en el centro */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-container button.active {
+  background-color: #0056b3; /* Un color más oscuro para el botón activo */
+}
+
+.pagination-container button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Estilo para el modal */
+#modal-details {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 55%;
+  background-color: #2a2a2a;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Estilo para el contenido del modal */
+#modal-body {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between; /* Separar imagen y tabla */
+  padding-bottom: 20px;
+}
+
+/* Estilo para la imagen dentro del modal */
+#modal-body img {
+  width: 45%; /* Ajuste en el tamaño de la imagen */
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Estilo para la tabla dentro del modal */
+#modal-body table {
+  width: 45%; /* Ajustar tabla a un tamaño más pequeño */
+  border-collapse: collapse;
+}
+
+/* Estilo de las celdas de la tabla */
+#modal-body td, #modal-body th {
+  padding: 10px;
+  border: 1px solid #444;
+  text-align: left;
+  word-wrap: break-word;
+}
+
+
+/* Estilo para los encabezados de la tabla */
+#modal-body th {
+  background-color: #333; /* Fondo oscuro para los encabezados */
+  color: #fff; /* Color blanco para el texto */
+  font-weight: bold;
+}
+
+/* Estilo de los botones en el modal */
+.modal-buttons {
+  display: flex;
+  justify-content: center; /* Centrar los botones */
+  margin-top: 20px;
+}
+
+.btn-buy {
+  padding: 12px 24px; /* Aumentamos el tamaño de los botones */
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 5px; /* Espacio entre los botones */
+  background-color: #28a745; /* Azul similar al de la página */
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-buy:hover {
+  background-color: #28a745; /* Color más oscuro para el hover */
+  opacity: 0.9;
+}
+
+.btn-close {
+  padding: 12px 24px; /* Estilo para el botón de cerrar */
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  background-color: #f44336; /* Rojo para cerrar */
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-close:hover {
+  background-color: #e53935;
+}
+
+/*Modal Payment Options
+/*Modal Payment Options
+/*Modal Payment Options
+
+/* Modal de opciones de pago */
+#payment-options-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  max-width: 700px;
+  padding: 40px;
+  background-color: #2c2c2c;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 45%;
+}
+
+/* Efecto de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo común para la "X" de cierre en todos los modales */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: white; /* Asegúrate de que sea visible sobre el fondo oscuro */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #f39c12; /* Cambia el color al pasar el ratón */
+}
+
+
+
+/* Título del modal */
+#payment-options-modal h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #808080;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-bottom: 2px solid #007BFF;
+}
+
+#payment-options-modal h2:hover {
+  border-color: #0056b3; /* Cambio de color en hover */
+}
+
+/* Estilo para el cuerpo del modal */
+#payment-options-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Estilo para los botones de opciones de pago */
+.payment-options-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Aumento del espacio entre botones */
+  align-items: center;
+  width: 100%;
+}
+
+/* Contenedor de botones */
+.btn-container {
+  display: flex;
+  flex-direction: column; /* Alinea los botones verticalmente */
+  align-items: center; /* Centra los botones */
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Estilo para los botones de opciones de pago */
+.btn-pay {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: 2px solid #007BFF;
+  background-color: transparent;
+  color: #007BFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.btn-pay:hover {
+  background-color: #2c2c2c;
+  border-color: #7FFF00;
+  transform: scale(1.05);
+}
+
+/* Botón de Volver */
+.btn-back {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: 2px solid #bb86fc;
+  background-color: transparent;
+  color: #bb86fc;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: #bb86fc;
+  border-color: #3700b3;
+  transform: scale(1.1);
+}
+
+/* Botón de Volver */
+.btn-back {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid #bb86fc;
+  background-color: transparent;
+  color: #bb86fc;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  text-align: center;
+  letter-spacing: 1px;
+  width: 100%; /* Los botones ocupan todo el ancho disponible */
+}
+
+/* Efecto hover del botón de Volver */
+.btn-back:hover {
+  color: #121212;
+  background-color: #bb86fc;
+  border-color: #3700b3;
+}
+
+.btn-back:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #074e85;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.btn-back:hover:before {
+  width: 100%;
+}
+
+/* Estilo para el botón de cerrar */
+#close-payment-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+#close-payment-modal:hover {
+  color: #f0f0f0;
+}
+
+/* Fondo oscuro y semitransparente detrás del modal */
+#payment-options-modal:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
+  z-index: -1; /* Detrás del modal */
+  animation: darkenBackground 0.5s ease-out; /* Animación de fondo */
+}
+
+/* Animación de fondo oscuro */
+@keyframes darkenBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Transición de desenfoque al fondo cuando el modal está visible */
+#payment-options-modal.open {
+  filter: blur(4px); /* Desenfoque suave del fondo */
+  transition: filter 0.3s ease-out;
+}
+
+/* Estilos de los iconos en los botones (si decides agregar) */
+.payment-options-buttons i {
+  margin-right: 10px; /* Espacio entre icono y texto */
+}
+
+/* Estilo para el cuerpo del modal en caso de que haya una imagen */
+#payment-options-modal-body img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para el texto pequeño debajo de las opciones de pago */
+.small-text {
+  font-size: 12px;
+  color: #808080;  /* Color gris suave */
+  margin-top: 5px;
+}
+
+/*Modal Payment Options
+/*Modal Payment Options
+/*Modal Payment Options
+
+/* Estilo para el modal de opciones de pago */
+.modal-payment {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 50%; /* Centramos verticalmente */
+  left: 50%; /* Centramos horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta el centro del modal */
+  width: 50%; /* Ancho más amplio para darle una sensación de amplitud */
+  max-width: 700px; /* Ancho máximo */
+  padding: 40px;
+  background-color: #2c2c2c; /* Fondo gris oscuro (negro claro) */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+  border-radius: 12px; /* Bordes más suaves */
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centra el modal verticalmente */
+  animation: fadeIn 0.3s ease-out;
+  height: 45%; /* Aumentamos la altura del modal */
+  filter: blur(0); /* No hay desenfoque inicial */
+}
+
+/* Efecto de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo para el botón de cerrar (X) */
+.close-modal-payment {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: #FF0000; /* Color rojo para la X */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 1001; /* Aseguramos que el botón esté encima del modal */
+}
+
+.close-modal-payment:hover {
+  color: #ff4d4d; /* Rojo más claro cuando se pasa el mouse */
+}
+
+/* Título del modal */
+.modal-payment h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #808080;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-bottom: 2px solid #007BFF; /* Línea debajo del título */
+  transition: all 0.3s ease; /* Suavizamos el borde */
+}
+
+.modal-payment h2:hover {
+  border-color: #0056b3; /* Cambio de color en hover */
+}
+
+/* Estilo para el cuerpo del modal */
+.modal-payment-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Estilo para los botones de opciones de pago */
+.payment-options-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Aumento del espacio entre botones */
+  align-items: center;
+  width: 100%;
+}
+
+/* Contenedor de botones */
+.btn-container {
+  display: flex;
+  flex-direction: column; /* Alinea los botones verticalmente */
+  align-items: center; /* Centra los botones */
+  gap: 10px; /* Espacio entre los botones */
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Botón de Pago a Mensualidades */
+.btn-payment {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid #007BFF;
+  background-color: transparent;
+  color: #007BFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease; /* Solo transición de tamaño */
+  z-index: 1;
+  text-align: center;
+  letter-spacing: 1px;
+  width: 100%; /* Los botones ocupan todo el ancho disponible */
+  margin-bottom: 20px; /* Espacio debajo del botón de "Pago a Mensualidades" */
+}
+
+/* Efecto hover del botón de Pago a Mensualidades */
+.btn-payment:hover {
+  color: #007BFF;
+  background-color: #2c2c2c;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+  border-color: #7FFF00;
+  transform: scale(1.05); /* Aumentar tamaño al pasar el mouse */
+}
+
+/* Botón de Volver */
+.btn-back {
+  padding: 12px 28px;
+  border-radius: 30px;
+  border: 2px solid #bb86fc;
+  background-color: transparent;
+  color: #bb86fc;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 1;
+  text-align: center;
+  letter-spacing: 1px;
+  width: 100%; /* Los botones ocupan todo el ancho disponible */
+}
+
+/* Efecto hover del botón de Volver */
+.btn-back:hover {
+  color: #121212;
+  background-color: #bb86fc;
+  border-color: #3700b3;
+}
+
+/* Fondo oscuro y semitransparente detrás del modal */
+.modal-payment:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
+  z-index: -1; /* Detrás del modal */
+  animation: darkenBackground 0.5s ease-out; /* Animación de fondo */
+}
+
+/* Animación de fondo oscuro */
+@keyframes darkenBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Transición de desenfoque al fondo cuando el modal está visible */
+.modal-payment.open {
+  filter: blur(4px); /* Desenfoque suave del fondo */
+  transition: filter 0.3s ease-out;
+}
+
+/* Estilos de los iconos en los botones (si decides agregar) */
+.payment-options-buttons i {
+  margin-right: 10px; /* Espacio entre icono y texto */
+}
+
+/* Estilo para el texto pequeño debajo de las opciones de pago */
+.small-text {
+  font-size: 12px;
+  color: #808080;  /* Color gris suave */
+  margin-top: 5px;
+}
+
+/* Estilo para el modal de Pago con Tarjeta */
+.modal-credit-card-pay {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%; /* Ajusta el tamaño del modal */
+  max-width: 900px;
+  padding: 50px;
+  background-color: #2c2c2c;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 3px solid #ffffff; /* Borde blanco de 3px */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+  animation: fadeIn 0.5s ease; /* Animación de aparición */
+}
+
+/* Efecto de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo común para la "X" de cierre en todos los modales */
+.close-btn-credit-card-pay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: white; /* Asegúrate de que sea visible sobre el fondo oscuro */
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn-credit-card-pay:hover {
+  color: #f39c12; /* Cambia el color al pasar el ratón */
+}
+
+/* Título del modal */
+.modal-credit-card-pay h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #808080;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-bottom: 2px solid #007BFF;
+}
+
+.modal-credit-card-pay h2:hover {
+  border-color: #0056b3; /* Cambio de color en hover */
+}
+
+/* Estilo para el cuerpo del modal */
+.modal-credit-card-pay-body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* Aumenté el espacio entre los elementos */
+  align-items: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Estilo para las etiquetas del formulario */
+#payment-card-form label {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 20px; /* Aumenté el espacio entre los labels */
+  font-weight: bold;
+}
+
+#payment-card-form select, #payment-card-form input {
+  margin-bottom: 20px; /* Espacio debajo de cada campo de entrada */
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Estilo para los campos de entrada */
+#payment-card-form input,
+#payment-card-form select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  background-color: #3b3b3b;
+  color: white;
+  transition: border-color 0.3s ease;
+}
+
+/* Aumenta el espacio entre los campos */
+#payment-card-form .input-group {
+  display: flex;
+  gap: 20px; /* Agrega separación entre los campos de tipo de tarjeta, número, etc. */
+  width: 100%;
+}
+
+/* Estilo para los campos al hacer focus */
+#payment-card-form input:focus,
+#payment-card-form select:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Estilo para los botones de pagar y cancelar */
+.payment-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* Botón de Pagar */
+.btn-pay-card {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: 2px solid #007BFF;
+  background-color: transparent;
+  color: #007BFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-pay-card:hover {
+  background-color: #2c2c2c;
+  border-color: #7FFF00;
+  transform: scale(1.05);
+}
+
+/* Botón de Cancelar */
+.btn-cancel-card {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: 2px solid #f44336;
+  background-color: transparent;
+  color: #f44336;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.btn-cancel-card:hover {
+  background-color: #f44336;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Fondo oscuro y semitransparente detrás del modal */
+.modal-credit-card-pay:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
+  z-index: -1; /* Detrás del modal */
+  animation: darkenBackground 0.5s ease-out; /* Animación de fondo */
+}
+
+/* Animación de fondo oscuro */
+@keyframes darkenBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo para el modal de confirmación de pago */
+.modal-payment-confirmation {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%; /* Ajusta el tamaño del modal */
+  max-width: 900px;
+  padding: 50px;
+  background-color: #2c2c2c;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  border: 3px solid #ffffff;
+  z-index: 1050; /* Aseguramos que este modal esté por encima de otros */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Efecto de entrada suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilo común para la "X" de cierre en todos los modales */
+.close-modal-payment-confirmation {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-modal-payment-confirmation:hover {
+  color: #f39c12; /* Cambio de color al pasar el ratón */
+}
+
+/* Título del modal */
+.modal-payment-confirmation h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #808080;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-bottom: 2px solid #007BFF;
+}
+
+.modal-payment-confirmation h2:hover {
+  border-color: #0056b3; /* Cambio de color en hover */
+}
+
+/* Estilo para el cuerpo del modal */
+.modal-payment-confirmation-body {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  padding: 10px 0;
+  width: 100%;
+}
+
+/* Estilo para los botones de confirmación y cancelación */
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal-buttons button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* Botón de confirmación */
+.btn-confirm-payment {
+  background-color: green;
+  color: white;
+  width: 100%;
+}
+
+.btn-confirm-payment:hover {
+  background-color: #7FFF00;
+  border-color: #7FFF00;
+  transform: scale(1.05);
+}
+
+/* Botón de rechazo */
+.btn-reject-payment {
+  background-color: red;
+  color: white;
+  border: 2px solid red;
+  width: 100%;
+}
+
+.btn-reject-payment:hover {
+  background-color: red;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Fondo oscuro y semitransparente detrás del modal */
+.modal-payment-confirmation:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+  animation: darkenBackground 0.5s ease-out;
+}
+
+/* Animación de fondo oscuro */
+@keyframes darkenBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+/* Estilo para el modal de Pagar a Mensualidades */
+#modal-pagar-mensualidades {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 50%; /* Centramos verticalmente */
+  left: 50%; /* Centramos horizontalmente */
+  transform: translate(-50%, -50%); /* Ajusta el centro del modal */
+  width: 50%; /* Ancho más amplio para darle una sensación de amplitud */
+  padding: 40px;
+  background-color: #2c2c2c; /* Fondo gris oscuro (negro claro) */
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+  border-radius: 12px; /* Bordes más suaves */
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centra el contenido en el modal */
+  height: 500px; /* Altura automática para que se ajuste al contenido */
+  padding: 20px;
+}
+
+/* Activamos el modal con la clase 'open' */
+#modal-pagar-mensualidades.open {
+  display: flex; /* Mostramos el modal cuando tiene la clase 'open' */
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Estilo para el botón de cerrar (X) */
+#close-modal-pagar-mensualidades {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: #FF0000; /* Color rojo para la X */
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 1001; /* Aseguramos que el botón esté encima del modal */
+}
+
+#close-modal-pagar-mensualidades:hover {
+  color: #ff4d4d; /* Rojo más claro cuando se pasa el mouse */
+}
+
+/* Título del modal */
+#modal-pagar-mensualidades h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #808080;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 0;
+  border-bottom: 2px solid #007BFF; /* Línea debajo del título */
+  transition: all 0.3s ease; /* Suavizamos el borde */
+}
+
+#modal-pagar-mensualidades h2:hover {
+  border-color: #0056b3; /* Cambio de color en hover */
+}
+
+/* Estilo para el cuerpo del modal */
+#modal-pagar-mensualidades-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center; /* Asegura que los elementos se centren */
+  padding: 10px 0;
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+/* Estilo para las entradas de texto */
+#modal-pagar-mensualidades input[type="text"],
+#modal-pagar-mensualidades input[type="number"],
+#modal-pagar-mensualidades input[type="email"],
+#modal-pagar-mensualidades input[type="password"],
+#modal-pagar-mensualidades textarea {
+  width: 650px; /* Ajustamos el ancho para un diseño más centrado */
+  padding: 15px 20px;
+  border-radius: 8px; /* Bordes redondeados */
+  border: 2px solid #444444; /* Borde gris oscuro */
+  background-color: #333333; /* Fondo oscuro para las entradas */
+  color: #ffffff; /* Texto en blanco */
+  font-size: 16px;
+  margin: 10px 0; /* Espaciado entre entradas */
+  transition: border-color 0.3s ease; /* Transición suave en el borde */
+  outline: none; /* Quitar borde de enfoque */
+}
+
+/* Efecto al enfocar las entradas de texto */
+#modal-pagar-mensualidades input[type="text"]:focus,
+#modal-pagar-mensualidades input[type="number"]:focus,
+#modal-pagar-mensualidades input[type="email"]:focus,
+#modal-pagar-mensualidades input[type="password"]:focus,
+#modal-pagar-mensualidades textarea:focus {
+  border-color: #007BFF; /* Borde azul cuando está enfocado */
+  background-color: #444444; /* Fondo ligeramente más claro */
+}
+
+/* Estilo para el área de texto */
+#modal-pagar-mensualidades textarea {
+  height: 150px; /* Altura fija para el área de texto */
+  resize: vertical; /* Permitir cambiar el tamaño verticalmente */
+  padding: 15px; /* Espaciado interior */
+}
+
+/* Estilo para los botones dentro del modal */
+#payment-options-buttons button {
+  padding: 15px 30px;
+  border-radius: 8px; /* Bordes redondeados para los botones */
+  border: none;
+  background-color: #007BFF; /* Botón azul */
+  color: white;
+  font-size: 16px;
+  width: 80%; /* Botón más estrecho */
+  margin: 10px 0; /* Espaciado entre botones */
+  transition: background-color 0.3s ease; /* Suaviza la transición del color de fondo */
+}
+
+/* Efecto hover para los botones */
+#payment-options-buttons button:hover {
+  background-color: #0056b3; /* Azul más oscuro al hacer hover */
+}
+
+/* Estilo para el texto pequeño debajo de las opciones de pago */
+#small-text {
+  font-size: 12px;
+  color: #808080; /* Color gris suave */
+  margin-top: 5px;
+  text-align: center; /* Centra el texto */
+}
+
+/* Fondo oscuro y semitransparente detrás del modal */
+#modal-pagar-mensualidades:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con más opacidad */
+  z-index: -1; /* Detrás del modal */
+}
+
+/* Animación de fondo oscuro */
+@keyframes darkenBackground {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Eliminamos el desenfoque cuando el modal está abierto */
+#modal-pagar-mensualidades.open {
+  filter: none; /* Sin filtro de desenfoque */
+  transition: filter 0.3s ease-out;
+}
+
+/* Estilos de los iconos en los botones (si decides agregar) */
+#payment-options-buttons i {
+  margin-right: 10px; /* Espacio entre icono y texto */
+}
+
+/* Estilo para el campo de selección de meses a financiar */
+#modal-pagar-mensualidades select {
+  width: 690px; /* Ajustamos el ancho para que esté más centrado */
+  padding: 15px 20px;
+  border-radius: 8px; /* Bordes redondeados */
+  border: 2px solid #444444; /* Borde gris oscuro */
+  background-color: #333333; /* Fondo oscuro */
+  color: #ffffff; /* Texto en blanco */
+  font-size: 16px;
+  margin: 10px 0; /* Espaciado entre el campo y otros elementos */
+  transition: border-color 0.3s ease; /* Transición suave en el borde */
+  outline: none; /* Sin borde de enfoque */
+}
+
+/* Efecto al enfocar el campo de selección */
+#modal-pagar-mensualidades select:focus {
+  border-color: #007BFF; /* Borde azul cuando se enfoca */
+  background-color: #444444; /* Fondo ligeramente más claro */
+}
+
+/* Estilo para el texto que explica los meses a financiar */
+#financing-info {
+  font-size: 14px;
+  color: #808080; /* Gris suave */
+  text-align: center; /* Centrado */
+  margin-top: 10px;
+}
+
+/* Estilo para el botón "Calcular" */
+#calcular-pago {
+  padding: 15px 40px; /* Más espacio para un botón más grande */
+  border-radius: 12px; /* Bordes más suaves */
+  border: none;
+  background-color: #007BFF; /* Botón azul */
+  color: white;
+  font-size: 18px; /* Tamaño de fuente ligeramente mayor */
+  width: 690px; 
+  margin: 10px 0; /* Espaciado entre botones */
+  cursor: pointer; /* El puntero cambia a mano */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transición suave para el color y sombra */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Sombra sutil para darle profundidad */
+}
+
+/* Efecto hover para el botón "Calcular" */
+#calcular-pago:hover {
+  background-color: #0056b3; /* Azul más oscuro al hacer hover */
+  transform: scale(1.05); /* Efecto de agrandar el botón ligeramente */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada al hacer hover */
+}
+
+/* Efecto activo (cuando el botón es presionado) */
+#calcular-pago:active {
+  transform: scale(0.98); /* Reduce ligeramente el tamaño cuando se presiona */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más pequeña */
+}
+
+/* Estilos para la tabla de pagos calculados */
+.tabla-pago {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 700px;
+  background-color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+}
+
+.tabla-pago th, .tabla-pago td {
+  padding: 12px;
+  border-bottom: 1px solid #444;
+}
+
+.tabla-pago th {
+  background-color: #007BFF;
+  color: white;
+  text-transform: uppercase;
+}
+
+.tabla-pago tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla-pago td {
+  background-color: #222;
+}
+
+/* Resaltar el total */
+.total-row td {
+  font-weight: bold;
+  background-color: #0056b3;
+}
+
+/* Ajuste del orden de las columnas */
+.tabla-pago tr th:nth-child(1), .tabla-pago tr td:nth-child(1) { order: 1; } /* Precio Original */
+.tabla-pago tr th:nth-child(2), .tabla-pago tr td:nth-child(2) { order: 2; } /* Precio con Intereses */
+.tabla-pago tr th:nth-child(3), .tabla-pago tr td:nth-child(3) { order: 3; } /* Meses */
+.tabla-pago tr th:nth-child(4), .tabla-pago tr td:nth-child(4) { order: 4; } /* Pago Mensual */
+.tabla-pago tr th:nth-child(5), .tabla-pago tr td:nth-child(5) { order: 5; } /* Total a Pagar */
+
+/* Resaltar el total */
+.total-row td {
+  font-weight: bold;
+  background-color: #0056b3;
+}
+
+
+
+/* Todos los modales deben estar ocultos por defecto */
+#modal-details,
+#payment-options-modal,
+#cash-payment-modal,
+#credit-card-pay-modal,
+#payment-confirmation-modal,
+#modal-pagar-mensualidades {
+  display: none; /* Los modales estarán ocultos al cargar la página */
+}

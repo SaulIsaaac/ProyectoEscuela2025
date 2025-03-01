@@ -21,7 +21,6 @@ if (priceInput) {
     }
   });
 }
-
 // Función para formatear el kilometraje
 const kilometrajeInput = document.getElementById('kilometraje');
 if (kilometrajeInput) {
@@ -46,40 +45,45 @@ if (kilometrajeInput) {
   });
 }
 
-// Función para mostrar la alerta de éxito
-function showSuccessAlert(message) {
-  alert(message); // Mostrar la alerta con el mensaje proporcionado
-}
-
-//  Funcion para enviar el formulario 
 const form = document.getElementById('sellForm');
 if (form) {
+  // Al cargar el formulario, rellenamos el campo id_usuario con el valor del localStorage
+  const id_usuario = localStorage.getItem('id_usuario');
+  if (id_usuario) {
+    document.getElementById('id_usuario').value = id_usuario;
+  } else {
+    alert('No se encontró el ID del usuario. Asegúrate de haber iniciado sesión');
+  }
+
+  // Enviar el formulario
   form.addEventListener('submit', function (e) {
     e.preventDefault(); // Evitar el envío normal del formulario
     
+
     // Crear el objeto FormData para enviar tanto los datos como la imagen
     const formData = new FormData(form);
+    const imageFile = document.getElementById('imagen').files[0];
+    if (imageFile) {
+      formData.append('imagen', imageFile);  // Asegúrate de que la imagen esté incluida
+    }
 
-
-// Enviar los datos al servidor usando fetch
-fetch('http://localhost:3000/submit-form', {  // Asegúrate de usar la ruta correcta
-  method: 'POST',
-  body: formData
-})
-
-.then(response => response.json())
-.then(data => {
-  if (data.message === 'Solicitud aceptada y movida al inventario') {
-    alert('Formulario enviado con éxito y solicitud aceptada'); // Alerta en caso de éxito
-  } else if (data.message === 'Error al enviar el formulario') {
-    alert('Algo salió mal, por favor intenta de nuevo'); // Alerta en caso de error
-  }
-})
-.catch(error => {
-  console.error('Error:', error);
-  alert('Error al enviar el formulario'); // Alerta en caso de error en la solicitud
-});
-
+    // Enviar los datos al servidor usando fetch
+    fetch('http://localhost:3000/submit-form', {  // Asegúrate de usar la ruta correcta
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message === 'Solicitud aceptada y movida al inventario') {
+        alert('Formulario enviado con éxito y solicitud aceptada'); // Alerta en caso de éxito
+      } else if (data.message === 'Error al enviar el formulario') {
+        alert('Algo salió mal, por favor intenta de nuevo'); // Alerta en caso de error
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error al enviar el formulario'); // Alerta en caso de error en la solicitud
+    });
 
     // Resetear el formulario y ocultar la imagen cargada
     const image = document.getElementById('vehicle-image');
@@ -92,85 +96,54 @@ fetch('http://localhost:3000/submit-form', {  // Asegúrate de usar la ruta corr
   });
 }
 
-// Función para mostrar alertas de éxito
-function showSuccessAlert(message) {
-  const alert = document.getElementById('alert');
-  if (alert) { // Verificar que el elemento existe
-    alert.style.display = 'block';
-    alert.querySelector('p').innerText = message;
-  } else {
-    console.error('El elemento de alerta no se encuentra en el DOM');
-  }
-}
-
-
-// Función para cerrar la alerta
-function closeAlert() {
-  const alert = document.getElementById('alert');
-  alert.style.display = 'none';
-}
-
-// Definir la función para permitir solo números en el campo de teléfono
-function formatPhone(inputElement) {
-  let phoneNumber = inputElement.value; // Obtener el valor del input
-
-  // Eliminar todos los caracteres que no sean números
-  phoneNumber = phoneNumber.replace(/\D/g, ''); 
-
-  // Actualizar el valor del input con solo los números
-  inputElement.value = phoneNumber;
-}
-
-// Asignar la función de formateo al campo de teléfono
-const telefonoInput = document.getElementById('telefono');
-if (telefonoInput) {
-  telefonoInput.addEventListener('input', function() {
-    formatPhone(this); // Llamar a la función para permitir solo números
-  });
-}
-
-// Lógica para el formulario de registro
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
-  registerForm.addEventListener('submit', (e) => {
+  registerForm.addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevenir el envío normal del formulario
 
-    const newUser = {
-      nombre: document.getElementById('fullName').value,
-      correo: document.getElementById('newEmail').value,
-      contrasena: document.getElementById('newPassword').value,
-    };
+    // Obtener los valores del formulario y hacer trim para eliminar espacios en blanco
+    const nombre = document.getElementById('fullName').value.trim();
+    const telefono = document.getElementById('phoneNumber').value.trim();
+    const correo = document.getElementById('newEmail').value.trim();
+    const contrasena = document.getElementById('newPassword').value.trim();
 
-    const newEmail = document.getElementById('newEmail');
-    const newPassword = document.getElementById('newPassword');
-
-    if (newEmail && newPassword) {
-      const newUser = {
-        nombre: document.getElementById('fullName').value,
-        correo: newEmail.value,
-        contrasena: newPassword.value,
-      };
-    } else {
+    // Verificar que los campos no estén vacíos
+    if (!nombre || !correo || !contrasena || !telefono) {
       console.error('Faltan campos en el formulario');
-}
+      alert('Por favor, complete todos los campos');
+      return;
+    }
 
+    // Crear el objeto newUser con el teléfono incluido
+    const newUser = { nombre, correo, contrasena, telefono };
 
-    // Verificar si el correo ya está registrado
-    const existingUser = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = existingUser.some(user => user.correo === newUser.correo);
+    try {
+      // Enviar la solicitud al backend
+      const response = await fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
 
-    if (userExists) {
-      showSuccessAlert('El correo ya está registrado');
-    } else {
-      // Registrar el nuevo usuario
-      existingUser.push(newUser);
-      localStorage.setItem('users', JSON.stringify(existingUser));
+      const data = await response.json(); // Asegúrate de parsear la respuesta JSON
 
-      showSuccessAlert('Fuiste registrado con éxito');
-      window.location.href = 'login.html'; // Redirige al login
+      if (response.ok) {
+        console.log('Usuario registrado:', data);
+        alert('Registro exitoso');
+        window.location.href = "login.html"; // Redirigir a login después del registro
+      } else {
+        console.error('Error en el registro:', data.message);
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error('Error en la conexión:', error);
+      alert('Error en la conexión con el servidor');
     }
   });
 }
+
 
 // Lógica para el formulario de login
 const loginForm = document.getElementById('loginForm');
@@ -178,21 +151,34 @@ if (loginForm) {
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevenir el envío del formulario
 
-    const correo = document.getElementById('username').value;
-    const contrasena = document.getElementById('password').value;
+    const correo = document.getElementById('username').value.trim(); // Hacer trim para evitar espacios en blanco
+    const contrasena = document.getElementById('password').value.trim();
 
-    // Recuperar usuarios desde localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(u => u.correo === correo && u.contrasena === contrasena);
-
-    if (user) {
-      showSuccessAlert('Inicio de sesión exitoso');
-      window.location.href = 'inventario.html'; // Redirige al inventario
-    } else {
-      showSuccessAlert('Correo o contraseña incorrectos');
-    }
+    // Enviar solicitud de login al backend
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ correo, contrasena })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        localStorage.setItem('id_usuario', data.id_usuario); // Guardamos el ID del usuario
+        showSuccessAlert('Inicio de sesión exitoso');
+        window.location.href = 'menu-principal.html'; // Redirige al inventario
+      } else {
+        showSuccessAlert('Correo o contraseña incorrectos');
+      }
+    })
+    .catch(error => {
+      console.error('Error en la conexión:', error);
+      showSuccessAlert('Error al intentar iniciar sesión');
+    });
   });
 }
+
 
 // Función para mostrar la imagen seleccionada
 function displayImage(event) {
@@ -216,7 +202,6 @@ function displayImage(event) {
   }
 }
 
-
 // Función para alternar la visibilidad de la contraseña
 function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
   const passwordField = document.getElementById(passwordFieldId);
@@ -236,7 +221,6 @@ if (document.getElementById('password') && document.getElementById('togglePasswo
 if (document.getElementById('newPassword') && document.getElementById('togglePasswordRegister')) {
   togglePasswordVisibility('newPassword', 'togglePasswordRegister'); // Para el registro
 }
-
 
 // Función para resetear el formulario y la imagen
 function resetForm() {

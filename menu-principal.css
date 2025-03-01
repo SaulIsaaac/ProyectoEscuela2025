@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a;
+  color: #fff;
+  height: 100vh; /* Asegura que el body ocupe toda la altura */
+  display: flex;
+  flex-direction: column; /* Los elementos se alinean verticalmente */
+}
+
+/* Menú en la parte inferior */
+.footer-menu {
+  background-color: #222;
+  display: flex;
+  justify-content: center; /* Centra los elementos dentro del contenedor */
+  align-items: center;
+  height: 10vh; /* Ajusta la altura del menú */
+  padding: 0 20px; /* Añade un pequeño padding para espaciado */
+  position: relative; /* Para posicionar el botón de cerrar sesión a la derecha */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+}
+
+/* Contenedor de los botones del lado derecho */
+.right-buttons {
+  position: absolute; /* Para posicionarlo fuera del flujo normal del layout */
+  right: 20px; /* Coloca los botones a la derecha */
+  display: flex;
+  flex-direction: column; /* Los botones se alinean verticalmente */
+  gap: 15px; /* Espaciado entre los botones */
+}
+
+.right-buttons a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid white; /* Borde blanco para los botones */
+  display: block;
+  text-align: center;
+}
+
+.right-buttons a:hover {
+  background-color: #f44336; /* Rojo para resaltar */
+  color: white;
+}
+
+/* Estilo para el botón de cerrar sesión */
+.logout-button {
+  position: absolute; /* Para posicionarlo fuera del flujo normal del layout */
+  right: 20px; /* Coloca el botón en la parte derecha del footer */
+  text-decoration: none; /* Elimina el subrayado */
+  color: white; /* Color de texto blanco */
+  font-size: 18px; /* Mismo tamaño de letra que el resto de los enlaces */
+  background-color: transparent; /* Fondo transparente */
+  padding: 10px 20px; /* Espaciado dentro del botón */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.logout-button:hover {
+  background-color: #f44336; /* Rojo para resaltar */
+  color: white; /* Mantiene el texto blanco */
+}
+
+/* Contenedor del video con borde gris */
+#video-wrapper {
+  margin: 0; /* Elimina el margen auto para pegar el contenedor a la izquierda */
+  margin-left: 40px;
+  margin-top: 14vh;
+  border: 5px solid #808080; /* Borde gris alrededor del contenedor */
+  padding: 10px; /* Espaciado interno entre el borde y el video */
+  width: 50%; /* Cambia el ancho del contenedor (puedes ajustarlo según necesites) */
+  height: 542px; /* Ajusta la altura del contenedor al 60% de la ventana del navegador */
+  background-color: #222; /* Fondo oscuro para el contenedor */
+  border-radius: 10px; /* Bordes redondeados para suavizar el borde */
+  float: left; /* Alinea el contenedor a la izquierda */
+}
+
+/* Estilo para el video */
+#video-container {
+  position: relative;
+  width: 100%; /* El video ocupará el 100% del ancho del contenedor */
+  height: 700px; /* El video ocupará el 100% de la altura del contenedor */
+  overflow: hidden;
+}
+
+#video-container video {
+  width: 100%; /* El video ocupará el 100% del ancho del contenedor */
+  height: auto; /* La altura se ajustará proporcionalmente */
+  object-fit: contain; /* Asegura que el video se ajuste dentro del contenedor sin recortarlo */
+}
+
+/* Contenedor para los botones a la derecha del video */
+.right-buttons {
+  position: absolute;
+  top: 40vh;
+  left: 1200px;
+  right: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 510px;
+  text-align: center;
+}
+
+.right-buttons .nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+.right-buttons .nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  background-color: transparent;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 3px solid #fff; /* Contorno blanco visible */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+/* Estilo al pasar el ratón */
+.right-buttons .nav-links a:hover {
+  background-color: #333;
+  border: 3px solid #f1f1f1; /* Contorno cambia de blanco a un tono más claro */
+  transform: scale(1.05);
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Técnico</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles-menu.css">
+    <link rel="stylesheet" href="styles.css">>
+    <link rel="stylesheet" href="servicioTecnico.css">
+
+</head>
+<body>
+
+    <!-- Barra de navegación superior -->
+    <header class="top-nav">
+        <ul>
+            <li><a href="menu-principal.html">Menú Anterior</a></li> <!-- Enlace agregado -->
+        </ul>
+    </header>
+
+    <div class="form-container">
+        <h2>Formulario de Servicio Técnico</h2>
+        <!-- Añadí enctype="multipart/form-data" para poder enviar archivos -->
+        <form id="servicio-tecnico-form" action="/servicio-tecnico" method="POST" enctype="multipart/form-data">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+    
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+    
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" maxlength="10" required>
+    
+            <label for="motivo">Motivo del correo:</label>
+            <select id="motivo" name="motivo" required>
+                <option value="">Seleccionar...</option>
+                <option value="soporte">Soporte técnico</option>
+                <option value="garantia">Garantía</option>
+                <option value="garantia">Quejas</option>
+                <option value="otro">Otro</option>
+            </select>
+    
+            <label for="descripcion">Descripción del problema:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+    
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script src="servicioTecnico.js"></script>
+</body>
+</html>
