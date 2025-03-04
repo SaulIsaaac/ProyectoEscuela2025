@@ -9,14 +9,31 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column; /* Alineación vertical del contenido */
 }
 
 /* Barra de navegación superior */
 .top-nav {
     background-color: #333; /* Fondo oscuro para la barra */
     padding: 15px;
-    width: 100%;
-    text-align: right;
+    width: 100%;  /* Aseguramos que ocupe todo el ancho de la pantalla */
+    position: fixed;  /* Hacemos que el header se quede fijo en la parte superior */
+    top: 0;  /* Alineamos el header en la parte superior */
+    left: 0;  /* Alineamos el header en la parte izquierda */
+    z-index: 1000; /* Aseguramos que el header esté por encima de otros elementos */
+    display: flex;  /* Usamos flexbox para alinear el contenido */
+    justify-content: flex-end;  /* Alineamos los elementos a la derecha */
+}
+
+.top-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;  /* Eliminamos los puntos de lista */
+    display: flex;  /* Usamos flexbox para alinear los elementos */
+}
+
+.top-nav li {
+    margin-left: 20px;  /* Espaciado entre los elementos */
 }
 
 .top-nav a {
@@ -25,13 +42,14 @@ body {
     font-size: 16px;
     padding: 10px 20px;
     border-radius: 4px;
-    margin-left: 10px;
     transition: background-color 0.3s ease;
 }
 
 .top-nav a:hover {
     background-color: #444; /* Cambio de color en hover */
 }
+
+
 
 /* Contenedor del formulario */
 .form-container {
@@ -67,7 +85,7 @@ h2 {
 .form-container form input,
 .form-container form select,
 .form-container form textarea {
-    width: 91%;
+    width: 91%; /* Aseguramos que todos los campos ocupen el 100% del ancho */
     padding: 10px; /* Menos relleno para los campos */
     margin-bottom: 15px; /* Espacio entre los campos */
     background-color: #333; /* Fondo oscuro para los campos */

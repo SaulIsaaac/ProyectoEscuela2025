@@ -15,17 +15,20 @@ document.getElementById("mantenimiento-form").addEventListener("submit", functio
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
+        // Intentamos parsear la respuesta como JSON
+        return response.json();
+    })
+    .then((data) => {
         if (data.success) {
-            alert("Solicitud enviada con éxito.");
-            document.getElementById("mantenimiento-form").reset(); // Resetear el formulario
+            alert("✅ Su solicitud ha sido enviada con éxito.");
+            document.getElementById("mantenimiento-form").reset(); // Restablecer el formulario
         } else {
-            alert("Hubo un error al enviar la solicitud.");
+            alert("❌ Se ha producido un error al enviar la solicitud. Por favor, inténtelo nuevamente.");
         }
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("Error:", error);
-        alert("Hubo un error al enviar la solicitud.");
+        alert("❌ Ha ocurrido un error inesperado al procesar la solicitud. Inténtelo de nuevo más tarde.");
     });
 });

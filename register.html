@@ -21,16 +21,16 @@
     <!-- Formulario de registro -->
     <form id="registerForm">
       <!-- Campo para ingresar el nombre completo -->
-      <input type="text" id="fullName" placeholder="Nombre Completo" required>
+      <input type="text" id="name" placeholder="Nombre Completo" required>
       <!-- Campo para ingresar el número de teléfono -->
-      <input type="tel" id="phoneNumber" placeholder="Número de teléfono" required maxlength="10">
+      <input type="tel" id="telefono" placeholder="Número de teléfono" required maxlength="10">
       <!-- Campo para ingresar el correo electrónico -->
-      <input type="email" id="newEmail" placeholder="Correo electrónico" required>
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
       <!-- Contenedor para la contraseña, con opción para mostrar u ocultar -->
       <div class="password-container">
-        <input type="password" id="newPassword" placeholder="Contraseña" required>
-        <!-- Icono de ojo para alternar la visibilidad de la contraseña -->
-        <span id="togglePasswordRegister" class="eye-icon">&#128065;</span>
+        <input type="password" id="contrasena" placeholder="Contraseña" required>
+       <!-- Icono de ojo para mostrar/ocultar la contraseña -->
+       <span id="togglePassword" class="eye-icon">&#128065;</span> 
       </div>
       <!-- Botón para enviar el formulario -->
       <button type="submit">Registrarse</button>

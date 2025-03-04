@@ -1,0 +1,120 @@
+--- Hola Profe, si trata de usar el programa con la base de datos muy probablemente le salgan varios errores y no lo dejen usarla ya que en mi workbench de sql
+--- tengo varias keys desactivadas y algunas activadas como el SQL_SAFE_UPDATES entre otras mas, por lo mismo le voy a archivar un video del programa para que 
+--- usted pueda ver que en realidad si funciona 
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    correo VARCHAR(255) NOT NULL UNIQUE,
+    telefono VARCHAR(13) NOT NULL,
+    contrasena VARCHAR(255) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS solicitudes_autos (
+  id INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  nombre VARCHAR(255) NOT NULL,
+  correo VARCHAR(255) NOT NULL,
+  telefono VARCHAR(13) NOT NULL,
+  marca VARCHAR(255) NOT NULL,
+  modelo VARCHAR(255) NOT NULL,
+  anio INT NOT NULL,
+  kilometraje INT NOT NULL,
+  transmision ENUM('estandar', 'automatica') NOT NULL,
+  electric ENUM('Sí', 'No') DEFAULT 'No',  -- Cambio a ENUM con valores 'Sí' y 'No'
+  descripcionVehiculo TEXT NOT NULL,
+  precioVenta DECIMAL(10,2) NOT NULL,
+  imagen_url VARCHAR(255) NOT NULL,
+  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') DEFAULT 'Pendiente',
+  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY id_usuario (id_usuario),
+  CONSTRAINT solicitudes_autos_ibfk_1 FOREIGN KEY (id_usuario) REFERENCES users (id)
+);
+
+CREATE TABLE IF NOT EXISTS solicitudes_aceptadas (
+  id INT NOT NULL AUTO_INCREMENT,
+  id_solicitud INT NOT NULL,
+  id_usuario INT NOT NULL,  -- Relación con el usuario
+  marca VARCHAR(255) NOT NULL,
+  modelo VARCHAR(255) NOT NULL,
+  anio INT NOT NULL,
+  kilometraje INT NOT NULL,
+  transmision ENUM('estandar', 'automatica') NOT NULL,
+  electric ENUM('Sí', 'No') NOT NULL,  -- Cambio a ENUM con 'Sí' o 'No'
+  descripcionVehiculo TEXT NOT NULL,
+  precioVenta DECIMAL(10,2) NOT NULL,
+  imagen_url TEXT NOT NULL,
+  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') NOT NULL,
+  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_usuario) REFERENCES users(id),  -- Relación con la tabla de usuarios
+  FOREIGN KEY (id_solicitud) REFERENCES solicitudes_autos(id)  -- Relación con la tabla de solicitudes_autos
+);
+
+CREATE TABLE IF NOT EXISTS inventario_autos (
+  id INT NOT NULL AUTO_INCREMENT,
+  id_solicitud INT NOT NULL,
+  id_usuario INT NOT NULL,  -- Relación con el usuario
+  marca VARCHAR(255) NOT NULL,
+  modelo VARCHAR(255) NOT NULL,
+  anio INT NOT NULL,
+  kilometraje INT NOT NULL,
+  transmision ENUM('estandar', 'automatica') NOT NULL,
+  electric ENUM('Sí', 'No') NOT NULL,  -- Cambio a ENUM con 'Sí' o 'No'
+  descripcionVehiculo TEXT NOT NULL,
+  precioVenta DECIMAL(10,2) NOT NULL,
+  imagen_url TEXT NOT NULL,
+  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') NOT NULL,
+  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_usuario) REFERENCES users(id),  -- Relación con la tabla de usuarios
+  FOREIGN KEY (id_solicitud) REFERENCES solicitudes_aceptadas(id)  -- Relación con la tabla de solicitudes_autos
+);
+
+CREATE TABLE solicitudes_mantenimiento (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(255) NOT NULL,
+  correo varchar(255) NOT NULL,
+  telefono varchar(15) NOT NULL,
+  marca varchar(50) NOT NULL,
+  modelo varchar(50) NOT NULL,
+  año int NOT NULL,
+  tipo_mantenimiento varchar(100) NOT NULL,
+  descripcion text NOT NULL,
+  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE solicitudes_servicio (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(255) NOT NULL,
+  correo varchar(255) NOT NULL,
+  telefono varchar(15) NOT NULL,
+  motivo varchar(100) NOT NULL,
+  descripcion text NOT NULL,
+  fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+SELECT * FROM users;
+SELECT * FROM solicitudes_autos;
+SELECT * FROM solicitudes_aceptadas;
+SELECT * FROM inventario_autos;
+SELECT * FROM solicitudes_mantenimiento;
+SELECT * FROM solicitudes_servicio;
+
+
+DELETE FROM users;
+DELETE FROM solicitudes_autos;
+DELETE FROM solicitudes_aceptadas;
+DELETE FROM inventario_autos;
+DELETE FROM solicitudes_mantenimiento;
+DELETE FROM solicitudes_servicio;
+
+SET SQL_SAFE_UPDATES = 0;

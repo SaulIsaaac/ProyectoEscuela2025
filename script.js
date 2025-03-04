@@ -86,7 +86,7 @@ fetch('http://localhost:3000/submit-form', {  // Asegúrate de usar la ruta corr
     const imagePlaceholder = document.querySelector('.image-placeholder');
     image.style.display = 'none';
     imagePlaceholder.style.display = 'block';
-    const fileInput = document.getElementById('imagen');
+    const fileInput = document.getElementById('imagen_url');
     fileInput.value = ''; // Limpiar el input de archivo
     form.reset(); // Resetear el formulario
   });
@@ -131,90 +131,144 @@ if (telefonoInput) {
 
 // Lógica para el formulario de registro
 const registerForm = document.getElementById('registerForm');
-if (registerForm) {
+const emailInput = document.getElementById('correo'); // Obtenemos el campo de correo
+
+if (registerForm && emailInput) {
+  // Verificar si el correo está registrado cuando el usuario cambia el valor del campo
+  emailInput.addEventListener('blur', () => {  // 'blur' es cuando el usuario deja el campo
+    const correo = emailInput.value;
+
+    if (correo) {
+      // Realizar la consulta al servidor para verificar si el correo ya está registrado
+      fetch(`http://localhost:3000/check-email?correo=${correo}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.exists) {
+            // Si el correo ya está registrado, mostrar mensaje y permitir al usuario cambiar el correo
+            alert('Este correo ya está registrado');
+            emailInput.removeAttribute('disabled');  // Habilitar el campo de correo nuevamente
+            emailInput.value = '';  // Limpiar el valor del campo
+          } else {
+            // Si el correo no está registrado, habilitar el campo si estaba deshabilitado
+            emailInput.removeAttribute('disabled');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Error al verificar el correo');
+        });
+    }
+  });
+
+  // Lógica para el formulario de registro
   registerForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevenir el envío normal del formulario
 
     const newUser = {
-      nombre: document.getElementById('fullName').value,
-      correo: document.getElementById('newEmail').value,
-      contrasena: document.getElementById('newPassword').value,
+      nombre: document.getElementById('name').value,
+      telefono: document.getElementById('telefono').value,
+      correo: document.getElementById('correo').value,
+      contrasena: document.getElementById('contrasena').value,
     };
-
-    const newEmail = document.getElementById('newEmail');
-    const newPassword = document.getElementById('newPassword');
-
-    if (newEmail && newPassword) {
-      const newUser = {
-        nombre: document.getElementById('fullName').value,
-        correo: newEmail.value,
-        contrasena: newPassword.value,
-      };
-    } else {
+    
+    
+    // Verificar si el correo o algún campo está vacío
+    if (!newUser.nombre || !newUser.correo || !newUser.telefono || !newUser.contrasena) {
       console.error('Faltan campos en el formulario');
-}
-
-
-    // Verificar si el correo ya está registrado
-    const existingUser = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = existingUser.some(user => user.correo === newUser.correo);
-
-    if (userExists) {
-      showSuccessAlert('El correo ya está registrado');
-    } else {
-      // Registrar el nuevo usuario
-      existingUser.push(newUser);
-      localStorage.setItem('users', JSON.stringify(existingUser));
-
-      showSuccessAlert('Fuiste registrado con éxito');
-      window.location.href = 'login.html'; // Redirige al login
+      alert('Por favor, completa todos los campos.');
+      return;
     }
+
+    // Si el correo no está deshabilitado (es decir, no está registrado), enviar los datos
+    if (!emailInput.disabled) {
+      // Enviar los datos al servidor
+      fetch('http://localhost:3000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser), // Enviar los datos como JSON
+      })
+      .then(response => {
+        // Verificar si la respuesta es exitosa (status 200)
+        if (!response.ok) {
+          throw new Error('Error al registrar el usuario');
+        }
+        return response.json(); // Procesar la respuesta JSON
+      })
+      .then(data => {
+        if (data.message) {
+          alert(data.message); // Mostrar la alerta de éxito
+          if (data.message === 'Usuario registrado con éxito') {
+            // Guardar el id_usuario recibido del servidor en localStorage
+            localStorage.setItem('id_usuario', data.id_usuario); // Guardamos el id_usuario
+            window.location.href = 'login.html'; // Redirige al login
+          }
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Hubo un error al registrar el usuario');
+      });
+    } else {
+      alert('Este correo ya está registrado');
+    }
+    
   });
 }
 
-// Lógica para el formulario de login
+
+// Lógica para el formulario de inicio de sesión
 const loginForm = document.getElementById('loginForm');
-if (loginForm) {
+const loginEmailInput = document.getElementById('correo'); // Obtenemos el campo de correo para inicio de sesión
+
+if (loginForm && loginEmailInput) {
+  // Lógica para el formulario de inicio de sesión
   loginForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevenir el envío del formulario
+    e.preventDefault(); // Prevenir el envío normal del formulario
 
-    const correo = document.getElementById('username').value;
-    const contrasena = document.getElementById('password').value;
-
-    // Recuperar usuarios desde localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(u => u.correo === correo && u.contrasena === contrasena);
-
-    if (user) {
-      showSuccessAlert('Inicio de sesión exitoso');
-      window.location.href = 'inventario.html'; // Redirige al inventario
-    } else {
-      showSuccessAlert('Correo o contraseña incorrectos');
-    }
-  });
-}
-
-// Función para mostrar la imagen seleccionada
-function displayImage(event) {
-  const file = event.target.files[0]; // Obtener el archivo desde el evento
-
-  if (file) { // Verificar si el archivo existe
-    const reader = new FileReader(); // Crear un objeto FileReader
-
-    reader.onload = function (e) {
-      const image = document.getElementById('vehicle-image');
-      const imagePlaceholder = document.querySelector('.image-placeholder');
-
-      image.src = e.target.result;  // Establecer la imagen cargada
-      image.style.display = 'block'; // Asegurarse de que la imagen sea visible
-
-      // Ocultar el texto del placeholder cuando se carga la imagen
-      imagePlaceholder.style.display = 'none';
+    const loginData = {
+      correo: document.getElementById('correo').value,
+      contrasena: document.getElementById('contrasena').value,
     };
 
-    reader.readAsDataURL(file); // Leer el archivo como URL en base64
-  }
+    // Verificar si el correo o la contraseña están vacíos
+    if (!loginData.correo || !loginData.contrasena) {
+      console.error('Faltan campos en el formulario');
+      alert('Por favor, completa todos los campos.');
+      return;
+    }
+
+    // Enviar los datos al servidor para verificar el inicio de sesión
+    fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginData),
+    })
+    .then(response => response.json()) // Procesar la respuesta del servidor
+    .then(data => {
+      console.log('Respuesta del servidor (login):', data); // Depuración para ver qué responde el servidor
+      if (data.message) {
+        alert(data.message); // Mostrar la alerta de éxito
+        if (data.message === 'Inicio de sesión con éxito') {
+          // Guardar el id del usuario en el localStorage
+          localStorage.setItem('userId', data.id); // Guardar el id del usuario
+          window.location.href = 'menu-principal.html'; // Redirige al panel de usuario
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Error al iniciar sesión:', error);
+      alert('Hubo un error al iniciar sesión');
+    });
+  });
 }
+
+
+
+
 
 
 // Función para alternar la visibilidad de la contraseña
@@ -229,8 +283,8 @@ function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
 }
 
 // Activar la visibilidad de la contraseña en los formularios
-if (document.getElementById('password') && document.getElementById('togglePassword')) {
-  togglePasswordVisibility('password', 'togglePassword'); // Para el login
+if (document.getElementById('contrasena') && document.getElementById('togglePassword')) {
+  togglePasswordVisibility('contrasena', 'togglePassword'); // Para el login
 }
 
 if (document.getElementById('newPassword') && document.getElementById('togglePasswordRegister')) {
@@ -254,7 +308,7 @@ function resetForm() {
   imagePlaceholder.style.display = 'block';
 
   // Limpiar el input de imagen para permitir la carga de una nueva imagen
-  const fileInput = document.getElementById('imagen');
+  const fileInput = document.getElementById('imagen_url');
   fileInput.value = ''; // Esto asegurará que el input de archivo se resetee
 }
 

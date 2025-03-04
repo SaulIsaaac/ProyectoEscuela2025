@@ -16,8 +16,7 @@
   <header>
     <nav class="top-nav">
       <div class="auth-links">
-        <a href="inventario.html">Menu Anterior</a>  <!-- Enlace para volver al menú anterior -->
-        <a href="login.html" onclick="logout()">Cerrar Sesión</a>  <!-- Enlace para cerrar sesión, ejecuta la función logout -->
+        <a href="menu-principal.html">Menu Anterior</a>  <!-- Enlace para volver al menú anterior -->
       </div>
     </nav>
   </header>
@@ -62,7 +61,7 @@
         <!-- Campo para el año del vehículo -->
         <div class="form-group">
           <label for="año">Año del Vehículo:</label>
-          <input type="text" id="año" name="año" placeholder="Ingresa el año del vehículo" required>
+          <input type="text" id="anio" name="anio" placeholder="Ingresa el año del vehículo" required>
         </div>
       </div>
 
@@ -83,38 +82,44 @@
           </select>
         </div>
 
-        <!-- Checkbox para indicar si el vehículo es eléctrico -->
-        <div class="form-group checkbox-container">
-            <input type="checkbox" id="electric" name="electric">  
-            <label for="electric">¿Es el auto eléctrico?</label>
+        <!-- Selector para el tipo de auto eléctrico -->
+        <div class="form-group">
+          <label for="electric">¿Es el auto eléctrico?</label>
+          <select id="electric" name="electric" required>
+            <option value="0">No</option>
+            <option value="1">Sí</option>
+          </select>
         </div>
 
         <!-- Campo para la descripción del vehículo -->
         <div class="form-group">
           <label for="descripcion">Descripción del Vehículo:</label>
-          <textarea id="descripcion" name="descripcion" placeholder="Ingresa una descripción del vehículo" required></textarea>
+          <textarea id="descripcionVehiculo" name="descripcionVehiculo" placeholder="Ingresa una descripción del vehículo" required></textarea>
         </div>
 
         <!-- Campo para el precio de venta del vehículo -->
         <div class="form-group">
           <label for="precio">Precio de Venta:</label>
-          <input type="text" id="precio" name="precio" placeholder="Ingresa el precio de venta" required>
+          <input type="text" id="precioVenta" name="precioVenta" placeholder="Ingresa el precio de venta" required>
         </div>
       </div>
 
       <!-- Contenedor para los botones de enviar y resetear -->
       <div class="button-container">
         <button type="submit" class="submit-btn">Enviar</button>  <!-- Botón para enviar el formulario -->
-        <button type="reset" class="submit-btn">Reset</button>  <!-- Botón para resetear el formulario -->
+        <button type="reset" class="submit-btn" id="resetButton" >Reset</button>  <!-- Botón para resetear el formulario -->
       </div>
 
     </form>
+
+    <input type="hidden" id="id_usuario" name="id_usuario" value="">
+
 
     <!-- Sección para cargar la imagen del vehículo -->
     <div class="form-group">
       <div class="image-container">
           <span class="image-placeholder">Haz click aquí y sube la imagen del vehículo</span>
-          <input type="file" id="imagen" name="imagen" accept="image/*" required onchange="displayImage(event)">  <!-- Campo para seleccionar una imagen -->
+          <input type="file" id="imagen_url" name="imagen_url" accept="image/jpeg, image/png, image/jpg, image/gif" required onchange="displayImage(event)">  <!-- Campo para seleccionar una imagen -->
           <img id="vehicle-image" alt="Imagen del vehículo" style="display:none;">  <!-- Imagen cargada que se muestra después de la selección -->
       </div>
     </div>
@@ -127,7 +132,12 @@
 
   </div>
 
+
+  
+
+
+
   <!-- Incluir archivo de script.js para la funcionalidad de JavaScript -->
-  <script src="script.js"></script>
+  <script src="vender.js"></script>
 </body>
 </html>

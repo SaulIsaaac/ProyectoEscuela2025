@@ -1,40 +1,40 @@
 /* Menú superior: Estilo para el contenedor del menú y sus enlaces */
 .top-nav {
-  display: flex;
-  justify-content: flex-end;
-  padding: 15px 30px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  background-color: #333;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-
-/* Estilo de los enlaces dentro del menú */
-.top-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Efecto al pasar el cursor sobre los enlaces */
-.top-nav a:hover {
-  color: #007BFF;
-  background-color: white;
-  padding: 5px 10px;
-  border-radius: 4px;
-  transform: scale(1.1);
-  text-decoration: none; /* Elimina el subrayado al pasar el cursor */
-
-}
-
-/* Efecto cuando se hace clic en los enlaces */
-.top-nav a:active {
-  transform: scale(1);
-}
+    display: flex;
+    justify-content: flex-end;
+    padding: 15px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  /* Estilo de los enlaces dentro del menú */
+  .top-nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Efecto al pasar el cursor sobre los enlaces */
+  .top-nav a:hover {
+    color: #007BFF;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transform: scale(1.1);
+    text-decoration: none; /* Elimina el subrayado al pasar el cursor */
+  
+  }
+  
+  /* Efecto cuando se hace clic en los enlaces */
+  .top-nav a:active {
+    transform: scale(1);
+  }

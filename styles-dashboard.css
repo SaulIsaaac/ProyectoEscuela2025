@@ -1,54 +1,100 @@
+/* Fondo oscuro para todo el body */
+body {
+  background-color: #1a1a1a;
+}
+
 /* Estilos generales del dashboard */
 .container {
-  max-width: 800px;          /* Establece un ancho máximo para el contenedor */
-  margin: 50px auto;        /* Centra el contenedor con un margen superior de 50px */
-  background: #fff;         /* Color de fondo blanco */
-  padding: 20px;            /* Espaciado interior de 20px */
-  border-radius: 8px;       /* Bordes redondeados con un radio de 8px */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra sutil alrededor del contenedor */
+  max-width: 1000px;           /* Ancho máximo */
+  margin: 50px auto;           /* Centrado con margen superior de 50px */
+  background: #2e2e2e;         /* Fondo oscuro para la sección principal */
+  padding: 20px;               /* Espaciado interno de 20px */
+  border-radius: 10px;         /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Sombra más sutil */
 }
 
-/* Estilos para los encabezados */
-h1, h2 {
-  text-align: center;       /* Centra el texto en los encabezados */
+/* Estilo para los encabezados */
+h1 {
+  text-align: center;          /* Texto centrado */
+  color: #fff;                 /* Color blanco */
+  font-size: 2rem;             /* Tamaño grande para el título */
 }
 
-/* Estilos para cada elemento de auto dentro del dashboard */
-.car-item {
-  background: #f9f9f9;      /* Color de fondo gris claro para cada tarjeta de auto */
-  margin: 20px 0;           /* Margen superior e inferior de 20px */
-  padding: 15px;            /* Espaciado interno de 15px */
-  border-radius: 8px;       /* Bordes redondeados con un radio de 8px */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra ligera alrededor de cada tarjeta */
+
+
+
+
+
+
+#solicitudes-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 100px; /* Se aumenta el espacio entre las tarjetas */
+  justify-items: center;
+  padding: 30px;
 }
 
-/* Estilos para los párrafos dentro de los elementos de auto */
-.car-item p {
-  margin: 5px 0;            /* Márgenes pequeños entre los párrafos */
+.solicitud-item {
+  background-color: #333;
+  color: white;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin-bottom: 30px; /* Espacio adicional en la parte inferior de cada tarjeta */
 }
 
-/* Estilos generales para los botones dentro de los elementos de auto */
-.car-item button {
-  background-color: #007BFF;  /* Color de fondo azul para el botón */
-  color: white;                /* Color de texto blanco */
-  padding: 8px 15px;           /* Espaciado interno de 8px vertical y 15px horizontal */
-  border: none;                /* Elimina el borde del botón */
-  border-radius: 4px;          /* Bordes ligeramente redondeados */
-  cursor: pointer;            /* Cambia el cursor a mano para indicar interactividad */
-  margin: 5px;                 /* Espaciado de 5px entre los botones */
+.solicitud-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Estilos para el hover (cuando el usuario pasa el mouse sobre el botón) */
-.car-item button:hover {
-  background-color: #0056b3;  /* Cambia el color de fondo a un azul más oscuro al pasar el mouse */
+.solicitud-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-/* Estilos para los botones de rechazo (con clase "reject") */
-.car-item button.reject {
-  background-color: #f44336;  /* Color de fondo rojo para el botón de rechazo */
+.solicitud-item .info {
+  margin-top: 15px;
 }
 
-/* Estilos para el hover del botón de rechazo */
-.car-item button.reject:hover {
-  background-color: #d32f2f;  /* Cambia el color de fondo a un rojo más oscuro cuando se pasa el mouse */
+.solicitud-item .info h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.solicitud-item .info p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.solicitud-item .buttons {
+  margin-top: 20px;
+}
+
+.solicitud-item button {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.solicitud-item button:hover {
+  background-color: #218838;
+}
+
+.solicitud-item button.reject {
+  background-color: #f44336;
+}
+
+.solicitud-item button.reject:hover {
+  background-color: #d32f2f;
 }

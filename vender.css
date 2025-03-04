@@ -1,6 +1,6 @@
 /* Estilo general para el cuerpo de la página */
 body {
-  background-color: gray; /* Color de fondo gris para toda la página */
+  background-color: #1a1a1a; /* Color de fondo gris para toda la página */
 }
 
 /* Estilo para centrar el formulario y el contenedor */
@@ -9,6 +9,7 @@ body {
   justify-content: center; /* Centra el formulario horizontalmente */
   align-items: center; /* Centra el formulario verticalmente */
   height: 100vh; /* Hace que el contenedor ocupe toda la altura de la ventana */
+  width: 1100px;
   gap: 20px; /* Espacio entre el formulario y el cuadro de la imagen */
 }
 
@@ -16,12 +17,12 @@ body {
 .form {
   width: 100%; /* El formulario ocupa el 100% del ancho disponible */
   max-width: 800px; /* El formulario no puede exceder los 800px de ancho */
-  background-color: #fff; /* Color de fondo blanco para el formulario */
+  background-color: #333; /* Color de fondo gris oscuro para el formulario */
   padding: 20px; /* Espaciado interno del formulario */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
   box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
-  border: 2px solid black; /* Contorno negro */
+  border: 2px solid #555; /* Contorno gris oscuro */
   position: relative;
   left: 100px; /* Mueve el formulario 100px desde el borde izquierdo */
 }
@@ -31,7 +32,7 @@ body {
   text-align: center; /* Centra el texto */
   font-size: 1.8rem; /* Tamaño de fuente grande */
   margin-bottom: 20px; /* Espaciado debajo del título */
-  color: #333; /* Color del texto */
+  color: #808080; /* Color del texto blanco */
 }
 
 /* Estilo para las filas del formulario */
@@ -51,7 +52,7 @@ body {
 /* Estilo de las etiquetas dentro de los grupos de formulario */
 .form-group label {
   font-size: 1rem; /* Tamaño de fuente de la etiqueta */
-  color: #333; /* Color del texto */
+  color: #808080; /* Color del texto blanco */
   display: block; /* Hace que la etiqueta ocupe toda la línea */
   margin-bottom: 5px; /* Espaciado debajo de la etiqueta */
 }
@@ -60,13 +61,15 @@ body {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  width: 100%; /* Los campos ocupan todo el ancho disponible */
+  width: 90%; /* Los campos ocupan todo el ancho disponible */
+  color: #808080;
   padding: 10px; /* Espaciado interno */
+  background-color: #2a2a2a;
   font-size: 1rem; /* Tamaño de fuente */
-  border: 1px solid #ccc; /* Borde gris */
-  border-radius: 5px; /* Bordes redondeados */
-  box-sizing: border-box; /* Incluye el padding en el tamaño total */
-  transition: border-color 0.3s; /* Transición suave para el cambio de color del borde */
+  border: 2px solid #444;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 /* Estilo cuando el campo de entrada tiene foco (cuando el usuario hace clic en él) */
@@ -97,13 +100,17 @@ body {
 
 /* Estilo para el botón de envío */
 .submit-btn {
-  background-color: #007BFF; /* Fondo azul */
-  color: white; /* Color blanco para el texto */
+  background-color: #2a2a2a; /* Fondo azul */
+  border: 2px solid #444;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  color: #808080; /* Color blanco para el texto */
 }
 
 /* Estilo del hover en el botón de envío */
 .submit-btn:hover {
-  background-color: #27ae60; /* Cambia el color a verde cuando el mouse pasa sobre el botón */
+  background-color: #444; /* Cambia el color a verde cuando el mouse pasa sobre el botón */
 }
 
 /* Estilo para el botón de reinicio */
@@ -122,8 +129,8 @@ body {
 .image-container {
   width: 450px; /* Ancho del cuadro de imagen */
   height: 300px; /* Alto del cuadro */
-  background-color: #f9f9f9; /* Fondo gris claro */
-  border: 2px dashed #ccc; /* Borde gris y punteado */
+  background-color: #2a2a2a; /* Fondo gris claro */
+  border: 2px solid #444; /* Borde gris y punteado */
   padding: 15px; /* Espaciado dentro del cuadro */
   border-radius: 8px; /* Bordes redondeados */
   display: flex; /* Usa Flexbox para centrar la imagen */
@@ -162,7 +169,6 @@ input[type="file"] {
   left: 0;
   cursor: pointer; /* Cursor en forma de puntero para indicar que se puede hacer clic */
 }
-
 
 /* Estilo personalizado para el checkbox */
 .checkbox-container {
@@ -204,6 +210,7 @@ input[type="file"] {
 /* Estilo del texto del checkbox */
 .checkbox-container label {
   font-size: 1rem; /* Tamaño de la fuente del texto */
-  color: #333; /* Color del texto */
+  color: #fff; /* Color del texto blanco */
   cursor: pointer; /* Cambia el cursor a mano cuando pasa sobre el texto */
 }
+

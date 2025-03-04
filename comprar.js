@@ -343,10 +343,11 @@ function closeCreditCardModalAndResetForm() {
       paymentConfirmationModal.style.display = 'none'; // Cerrar el modal de confirmación de pago
   });
 
-  confirmPayment.addEventListener('click', () => {
-      alert('Tu pago ha sido procesado correctamente. Dirígete a una de nuestras sucursales para continuar con el procedimiento correspondiente.');
-      paymentConfirmationModal.style.display = 'none'; // Cerrar el modal de confirmación de pago
-  });
+  confirmPayment.addEventListener("click", () => {
+    alert("✅ Su pago ha sido procesado con éxito. Por favor, diríjase a una de nuestras sucursales para continuar con el procedimiento correspondiente.");
+    paymentConfirmationModal.style.display = "none"; // Cerrar el modal de confirmación de pago
+});
+
 
 // ============================
 // Modal de Pagar a Mensualidades
