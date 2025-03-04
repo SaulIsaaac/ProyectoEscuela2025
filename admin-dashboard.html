@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título de la página -->
   <title>Panel de Administración</title>
-  <!-- Vincula los archivos CSS para estilos --> 
-  <link rel="stylesheet" href="styles-menu.css"> 
-  <link rel="stylesheet" href="styles-dashboard.css"> 
-  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Vincula los archivos CSS para los estilos del menú y del panel de administración -->
+  <link rel="stylesheet" href="styles-menu.css"> <!-- Estilos para el menú -->
+  <link rel="stylesheet" href="styles-dashboard.css"> <!-- Estilos para el panel de administración -->
+  <link rel="stylesheet" href="styles.css"> <!-- Estilos generales de la página -->
 </head>
+
 <body>
   <!-- Menú de navegación superior -->
   <div class="top-nav">
     <div id="authLinks" class="auth-links">
+      <!-- Enlace a la página principal -->
       <a href="index.html">Página Principal</a>
     </div>
   </div>
 
   <!-- Contenedor principal del panel de administración -->
   <div class="container">
-    <h1>Panel de Administración</h1>
+    <h1>Panel de Administración</h1> <!-- Título del panel -->
   </div>
 
+  <!-- Contenedor donde se mostrarán las solicitudes de autos para revisión -->
   <div id="solicitudes-container">
-    <!-- Aquí se mostrarán los autos enviados para revisión -->
+    <!-- Aquí se cargarán dinámicamente las solicitudes de autos enviados para revisión -->
   </div>
 
-  <!-- Vincula el archivo JavaScript para el dashboard -->
+  <!-- Vincula el archivo JavaScript para la funcionalidad del panel de administración -->
   <script src="admin-dashboard.js"></script>
 </body>
+
 </html>

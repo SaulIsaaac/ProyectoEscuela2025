@@ -1,5 +1,5 @@
-*{
-    margin: 0 ; 
-    padding: 0;
-    font-family: 'Arial', sans-serif;
+* {
+    margin: 0;                           /* Elimina el margen por defecto de todos los elementos */
+    padding: 0;                          /* Elimina el padding por defecto de todos los elementos */
+    font-family: 'Arial', sans-serif;    /* Asigna la fuente 'Arial' como fuente principal para todos los elementos */
 }

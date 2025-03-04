@@ -1,149 +1,149 @@
 /* Estilos generales */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Fondo oscuro */
-    color: #e0e0e0; /* Texto gris claro */
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  /* Contenedor del formulario */
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto gris claro */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Contenedor del formulario */
+.form-container {
+  background-color: #2a2a2a; /* Fondo oscuro similar al del modal */
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
+  width: 90%;
+  max-width: 600px;
+  border: 2px solid #444; /* Borde sutil */
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #808080; /* Gris para el título */
+  letter-spacing: 1px;
+}
+
+/* Formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Etiquetas de los campos */
+label {
+  font-size: 16px;
+  color: #808080;
+  font-weight: 500;
+}
+
+/* Campos de entrada (inputs, select, textarea) */
+input, select, textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #333; /* Fondo oscuro */
+  color: #808080;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Efectos cuando los campos están enfocados */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #007BFF; /* Color de borde azul cuando se enfoca */
+  box-shadow: 0 0 8px #007BFF; /* Sombra azul */
+}
+
+/* Botón */
+button {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #28a745; /* Verde para el botón */
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto hover del botón */
+button:hover {
+  background-color: #218838; /* Verde más oscuro cuando se pasa el mouse */
+  transform: scale(1.05); /* Ligeramente más grande al pasar el mouse */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
   .form-container {
-    background-color: #2a2a2a; /* Fondo oscuro similar al del modal */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
-    width: 90%;
-    max-width: 600px;
-    border: 2px solid #444; /* Borde sutil */
+      width: 95%; /* Ajusta el ancho en dispositivos móviles */
   }
-  
-  /* Título */
+
   h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 24px;
-    color: #808080; /* Rojo para el título */
-    letter-spacing: 1px;
+      font-size: 20px; /* Ajuste de tamaño de fuente en móviles */
   }
-  
-  /* Formulario */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+
+  input, select, textarea, button {
+      font-size: 14px; /* Ajuste de tamaño de fuente en móviles */
   }
-  
-  /* Etiquetas de los campos */
-  label {
-    font-size: 16px;
-    color: #808080;
-    font-weight: 500;
-  }
-  
-  /* Campos de entrada (inputs, select, textarea) */
-  input, select, textarea {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background-color: #333; /* Fondo oscuro */
-    color: #808080;
-    font-size: 15px;
-    transition: all 0.3s ease;
-  }
-  
-  /* Efectos cuando los campos están enfocados */
-  input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #007BFF; /* Rojo para el borde */
-    box-shadow: 0 0 8px #007BFF; /* Sombra roja */
-  }
-  
-  /* Botón */
-  button {
-    padding: 12px;
-    border-radius: 8px;
-    background-color: #28a745; /* Verde para el botón */
-    color: white;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Efecto hover del botón */
-  button:hover {
-    background-color: #218838; /* Verde más oscuro */
-    transform: scale(1.05);
-  }
-  
-  /* Ajustes para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .form-container {
-        width: 95%;
-    }
-  
-    h2 {
-        font-size: 20px;
-    }
-  
-    input, select, textarea, button {
-        font-size: 14px; /* Ajuste de tamaño de fuente en móviles */
-    }
-  }
-  
-  /* Estilo para el footer */
-  .footer-menu {
-    margin-top: 40px;
-    width: 100%;
-    text-align: center;
-    padding: 15px 0;
-    background-color: #2a2a2a; /* Mismo color oscuro del modal */
-    border-top: 1px solid #444;
-  }
-  
-  .menu-link {
-    color: #f44336; /* Rojo para el enlace */
-    font-size: 16px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .menu-link:hover {
-    color: #d32f2f; /* Rojo más oscuro para el hover */
-    text-decoration: underline;
-  }
-  
-  /* Estilo del encabezado */
+}
+
+/* Estilo para el footer */
+.footer-menu {
+  margin-top: 40px;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  background-color: #2a2a2a; /* Mismo color oscuro del modal */
+  border-top: 1px solid #444;
+}
+
+.menu-link {
+  color: #f44336; /* Rojo para el enlace */
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.menu-link:hover {
+  color: #d32f2f; /* Rojo más oscuro para el hover */
+  text-decoration: underline;
+}
+
+/* Estilo del encabezado */
 .top-nav {
-  background-color: #333;
+  background-color: #333; /* Fondo oscuro */
   padding: 15px;
-  text-align: right;
+  text-align: right; /* Alineación a la derecha */
 }
 
 .top-nav ul {
-  list-style: none;
+  list-style: none; /* Elimina los puntos de la lista */
   padding: 0;
 }
 
 .top-nav ul li {
-  display: inline;
+  display: inline; /* Elementos en línea */
   margin: 0 15px;
 }
 
 .top-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
+  color: white; /* Enlaces blancos */
+  text-decoration: none; /* Sin subrayado */
+  font-size: 18px; /* Tamaño de fuente moderado */
 }
 
 .top-nav ul li a.active {
-  font-weight: bold;
-  text-decoration: underline;
+  font-weight: bold; /* Texto en negrita para el enlace activo */
+  text-decoration: underline; /* Subrayado para el enlace activo */
 }

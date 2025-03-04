@@ -266,11 +266,6 @@ if (loginForm && loginEmailInput) {
   });
 }
 
-
-
-
-
-
 // Función para alternar la visibilidad de la contraseña
 function togglePasswordVisibility(passwordFieldId, toggleButtonId) {
   const passwordField = document.getElementById(passwordFieldId);

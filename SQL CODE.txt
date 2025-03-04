@@ -6,102 +6,109 @@
 
 
 
+-- Creación de la tabla 'users' para almacenar la información de los usuarios.
 CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(255) NOT NULL,
-    correo VARCHAR(255) NOT NULL UNIQUE,
-    telefono VARCHAR(13) NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
-    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- Identificador único de cada usuario 
+    nombre VARCHAR(255) NOT NULL,       -- Nombre del usuario 
+    correo VARCHAR(255) NOT NULL UNIQUE, -- Correo del usuario, debe ser único 
+    telefono VARCHAR(13) NOT NULL,      -- Número de teléfono del usuario 
+    contrasena VARCHAR(255) NOT NULL,   -- Contraseña del usuario 
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Fecha y hora del registro del usuario 
 );
 
+-- Creación de la tabla 'solicitudes_autos' para almacenar las solicitudes de autos realizadas por los usuarios.
 CREATE TABLE IF NOT EXISTS solicitudes_autos (
-  id INT NOT NULL AUTO_INCREMENT,
-  id_usuario INT NOT NULL,
-  nombre VARCHAR(255) NOT NULL,
-  correo VARCHAR(255) NOT NULL,
-  telefono VARCHAR(13) NOT NULL,
-  marca VARCHAR(255) NOT NULL,
-  modelo VARCHAR(255) NOT NULL,
-  anio INT NOT NULL,
-  kilometraje INT NOT NULL,
-  transmision ENUM('estandar', 'automatica') NOT NULL,
-  electric ENUM('Sí', 'No') DEFAULT 'No',  -- Cambio a ENUM con valores 'Sí' y 'No'
-  descripcionVehiculo TEXT NOT NULL,
-  precioVenta DECIMAL(10,2) NOT NULL,
-  imagen_url VARCHAR(255) NOT NULL,
-  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') DEFAULT 'Pendiente',
-  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
-  KEY id_usuario (id_usuario),
-  CONSTRAINT solicitudes_autos_ibfk_1 FOREIGN KEY (id_usuario) REFERENCES users (id)
+  id INT NOT NULL AUTO_INCREMENT,          -- Identificador único de la solicitud 
+  id_usuario INT NOT NULL,                 -- Relación con la tabla 'users' 
+  nombre VARCHAR(255) NOT NULL,            -- Nombre del usuario 
+  correo VARCHAR(255) NOT NULL,            -- Correo del usuario 
+  telefono VARCHAR(13) NOT NULL,           -- Número de teléfono del usuario 
+  marca VARCHAR(255) NOT NULL,             -- Marca del vehículo 
+  modelo VARCHAR(255) NOT NULL,            -- Modelo del vehículo 
+  anio INT NOT NULL,                       -- Año del vehículo 
+  kilometraje INT NOT NULL,                -- Kilometraje del vehículo 
+  transmision ENUM('estandar', 'automatica') NOT NULL, -- Tipo de transmisión del vehículo 
+  electric ENUM('Sí', 'No') DEFAULT 'No',  -- Si el vehículo es eléctrico o no 
+  descripcionVehiculo TEXT NOT NULL,       -- Descripción del vehículo 
+  precioVenta DECIMAL(10,2) NOT NULL,      -- Precio de venta del vehículo 
+  imagen_url VARCHAR(255) NOT NULL,        -- URL de la imagen del vehículo 
+  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') DEFAULT 'Pendiente', -- Estado de la solicitud (
+  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, -- Fecha y hora de la creación de la solicitud )
+  PRIMARY KEY (id),                       -- Define la clave primaria de la tabla
+  KEY id_usuario (id_usuario),            -- Índice en la columna 'id_usuario'
+  CONSTRAINT solicitudes_autos_ibfk_1 FOREIGN KEY (id_usuario) REFERENCES users (id) -- Relación con la tabla 'users'
 );
 
+-- Creación de la tabla 'solicitudes_aceptadas' para almacenar las solicitudes de autos que han sido aceptadas.
 CREATE TABLE IF NOT EXISTS solicitudes_aceptadas (
-  id INT NOT NULL AUTO_INCREMENT,
-  id_solicitud INT NOT NULL,
-  id_usuario INT NOT NULL,  -- Relación con el usuario
-  marca VARCHAR(255) NOT NULL,
-  modelo VARCHAR(255) NOT NULL,
-  anio INT NOT NULL,
-  kilometraje INT NOT NULL,
-  transmision ENUM('estandar', 'automatica') NOT NULL,
-  electric ENUM('Sí', 'No') NOT NULL,  -- Cambio a ENUM con 'Sí' o 'No'
-  descripcionVehiculo TEXT NOT NULL,
-  precioVenta DECIMAL(10,2) NOT NULL,
-  imagen_url TEXT NOT NULL,
-  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') NOT NULL,
-  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_usuario) REFERENCES users(id),  -- Relación con la tabla de usuarios
-  FOREIGN KEY (id_solicitud) REFERENCES solicitudes_autos(id)  -- Relación con la tabla de solicitudes_autos
+  id INT NOT NULL AUTO_INCREMENT,          -- Identificador único de la solicitud aceptada 
+  id_solicitud INT NOT NULL,               -- Relación con la tabla 'solicitudes_autos' 
+  id_usuario INT NOT NULL,                 -- Relación con la tabla 'users' 
+  marca VARCHAR(255) NOT NULL,             -- Marca del vehículo 
+  modelo VARCHAR(255) NOT NULL,            -- Modelo del vehículo 
+  anio INT NOT NULL,                       -- Año del vehículo 
+  kilometraje INT NOT NULL,                -- Kilometraje del vehículo 
+  transmision ENUM('estandar', 'automatica') NOT NULL, -- Tipo de transmisión del vehículo 
+  electric ENUM('Sí', 'No') NOT NULL,      -- Si el vehículo es eléctrico o no 
+  descripcionVehiculo TEXT NOT NULL,       -- Descripción del vehículo 
+  precioVenta DECIMAL(10,2) NOT NULL,      -- Precio de venta del vehículo 
+  imagen_url TEXT NOT NULL,                -- URL de la imagen del vehículo 
+  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') NOT NULL, -- Estado de la solicitud 
+  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, -- Fecha y hora de la creación de la solicitud aceptada 
+  PRIMARY KEY (id),                       -- Define la clave primaria de la tabla
+  FOREIGN KEY (id_usuario) REFERENCES users(id), -- Relación con la tabla 'users'
+  FOREIGN KEY (id_solicitud) REFERENCES solicitudes_autos(id) -- Relación con la tabla 'solicitudes_autos'
 );
 
+-- Creación de la tabla 'inventario_autos' para almacenar los autos que han sido aprobados y están listados en el inventario.
 CREATE TABLE IF NOT EXISTS inventario_autos (
-  id INT NOT NULL AUTO_INCREMENT,
-  id_solicitud INT NOT NULL,
-  id_usuario INT NOT NULL,  -- Relación con el usuario
-  marca VARCHAR(255) NOT NULL,
-  modelo VARCHAR(255) NOT NULL,
-  anio INT NOT NULL,
-  kilometraje INT NOT NULL,
-  transmision ENUM('estandar', 'automatica') NOT NULL,
-  electric ENUM('Sí', 'No') NOT NULL,  -- Cambio a ENUM con 'Sí' o 'No'
-  descripcionVehiculo TEXT NOT NULL,
-  precioVenta DECIMAL(10,2) NOT NULL,
-  imagen_url TEXT NOT NULL,
-  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') NOT NULL,
-  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_usuario) REFERENCES users(id),  -- Relación con la tabla de usuarios
-  FOREIGN KEY (id_solicitud) REFERENCES solicitudes_aceptadas(id)  -- Relación con la tabla de solicitudes_autos
+  id INT NOT NULL AUTO_INCREMENT,          -- Identificador único del auto en inventario 
+  id_solicitud INT NOT NULL,               -- Relación con la tabla 'solicitudes_aceptadas' 
+  id_usuario INT NOT NULL,                 -- Relación con la tabla 'users' 
+  marca VARCHAR(255) NOT NULL,             -- Marca del vehículo 
+  modelo VARCHAR(255) NOT NULL,            -- Modelo del vehículo
+  anio INT NOT NULL,                       -- Año del vehículo 
+  kilometraje INT NOT NULL,                -- Kilometraje del vehículo 
+  transmision ENUM('estandar', 'automatica') NOT NULL, -- Tipo de transmisión del vehículo 
+  electric ENUM('Sí', 'No') NOT NULL,      -- Si el vehículo es eléctrico o no 
+  descripcionVehiculo TEXT NOT NULL,       -- Descripción del vehículo 
+  precioVenta DECIMAL(10,2) NOT NULL,      -- Precio de venta del vehículo 
+  imagen_url TEXT NOT NULL,                -- URL de la imagen del vehículo 
+  estado ENUM('Pendiente', 'Aceptado', 'Rechazado') NOT NULL, -- Estado de la solicitud 
+  fecha_creacion TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, -- Fecha y hora de la creación del auto en inventario 
+  PRIMARY KEY (id),                       -- Define la clave primaria de la tabla
+  FOREIGN KEY (id_usuario) REFERENCES users(id), -- Relación con la tabla 'users'
+  FOREIGN KEY (id_solicitud) REFERENCES solicitudes_aceptadas(id) -- Relación con la tabla 'solicitudes_aceptadas'
 );
 
+-- Creación de la tabla 'solicitudes_mantenimiento' para almacenar las solicitudes de mantenimiento de vehículos.
 CREATE TABLE solicitudes_mantenimiento (
-  id int NOT NULL AUTO_INCREMENT,
-  nombre varchar(255) NOT NULL,
-  correo varchar(255) NOT NULL,
-  telefono varchar(15) NOT NULL,
-  marca varchar(50) NOT NULL,
-  modelo varchar(50) NOT NULL,
-  año int NOT NULL,
-  tipo_mantenimiento varchar(100) NOT NULL,
-  descripcion text NOT NULL,
-  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  id INT NOT NULL AUTO_INCREMENT,           -- Identificador único de la solicitud de mantenimiento 
+  nombre VARCHAR(255) NOT NULL,             -- Nombre del cliente que solicita el mantenimiento 
+  correo VARCHAR(255) NOT NULL,             -- Correo del cliente 
+  telefono VARCHAR(15) NOT NULL,            -- Teléfono del cliente 
+  marca VARCHAR(50) NOT NULL,               -- Marca del vehículo 
+  modelo VARCHAR(50) NOT NULL,              -- Modelo del vehículo 
+  año INT NOT NULL,                         -- Año del vehículo 
+  tipo_mantenimiento VARCHAR(100) NOT NULL, -- Tipo de mantenimiento solicitado 
+  descripcion TEXT NOT NULL,                -- Descripción del mantenimiento solicitado 
+  created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, -- Fecha y hora de la solicitud de mantenimiento 
+  PRIMARY KEY (id)                         -- Define la clave primaria de la tabla
+);
 
+-- Creación de la tabla 'solicitudes_servicio' para almacenar las solicitudes de servicio de vehículos.
 CREATE TABLE solicitudes_servicio (
-  id int NOT NULL AUTO_INCREMENT,
-  nombre varchar(255) NOT NULL,
-  correo varchar(255) NOT NULL,
-  telefono varchar(15) NOT NULL,
-  motivo varchar(100) NOT NULL,
-  descripcion text NOT NULL,
-  fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  id INT NOT NULL AUTO_INCREMENT,           -- Identificador único de la solicitud de servicio 
+  nombre VARCHAR(255) NOT NULL,             -- Nombre del cliente que solicita el servicio 
+  correo VARCHAR(255) NOT NULL,             -- Correo del cliente 
+  telefono VARCHAR(15) NOT NULL,            -- Teléfono del cliente 
+  motivo VARCHAR(100) NOT NULL,             -- Motivo del servicio solicitado 
+  descripcion TEXT NOT NULL,                -- Descripción del servicio solicitado 
+  fecha TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, -- Fecha y hora de la solicitud de servicio 
+  PRIMARY KEY (id)                         -- Define la clave primaria de la tabla
+);
 
+-- Consultas para seleccionar todos los registros de las tablas
 SELECT * FROM users;
 SELECT * FROM solicitudes_autos;
 SELECT * FROM solicitudes_aceptadas;
@@ -109,7 +116,7 @@ SELECT * FROM inventario_autos;
 SELECT * FROM solicitudes_mantenimiento;
 SELECT * FROM solicitudes_servicio;
 
-
+-- Eliminar todos los registros de las tablas
 DELETE FROM users;
 DELETE FROM solicitudes_autos;
 DELETE FROM solicitudes_aceptadas;
@@ -117,4 +124,5 @@ DELETE FROM inventario_autos;
 DELETE FROM solicitudes_mantenimiento;
 DELETE FROM solicitudes_servicio;
 
+-- Desactivar las actualizaciones seguras (para permitir DELETE sin restricciones)
 SET SQL_SAFE_UPDATES = 0;

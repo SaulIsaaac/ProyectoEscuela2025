@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Título de la página que aparecerá en la pestaña del navegador -->
   <title>Iniciar sesión como administrador</title>
-  <!-- Vincula los archivos CSS para estilos -->
+  
+  <!-- Vincula los archivos CSS para el estilo de la página -->
   <link rel="stylesheet" href="styles-menu.css">
   <link rel="stylesheet" href="styles-login-register.css">
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Menú de navegación superior -->
   <div class="top-nav">
+    <!-- Contenedor para los enlaces de autenticación -->
     <div id="authLinks" class="auth-links">
+      <!-- Enlace a la página principal -->
       <a href="index.html">Página Principal</a>
     </div>
   </div>
 
+  <!-- Contenedor principal de la página -->
   <div class="container">
+    <!-- Título de la sección de inicio de sesión -->
     <h1>Iniciar sesión como administrador</h1>
-    <!-- Formulario para el inicio de sesión del administrador -->
+    
+    <!-- Formulario para el inicio de sesión -->
     <form id="adminLoginForm">
-      <input type="text" id="adminID" placeholder="ID de administrador" required> <!-- Campo para el ID -->
-      <input type="password" id="adminPassword" placeholder="Contraseña" required> <!-- Campo para la contraseña -->
-      <button type="submit">Iniciar sesión</button> <!-- Botón para enviar el formulario -->
+      <!-- Campo de texto para ingresar el ID de administrador -->
+      <input type="text" id="adminID" placeholder="ID de administrador" required> 
+      
+      <!-- Campo de contraseña para ingresar la contraseña del administrador -->
+      <input type="password" id="adminPassword" placeholder="Contraseña" required> 
+      
+      <!-- Botón para enviar el formulario -->
+      <button type="submit">Iniciar sesión</button> 
     </form>
   </div>
 
-  <!-- Archivos JavaScript para gestionar el servidor y el inicio de sesión -->
+  <!-- Vincula el archivo JavaScript para gestionar la lógica de inicio de sesión -->
   <script src="admin-login.js"></script>
 </body>
+
 </html>

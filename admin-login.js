@@ -1,6 +1,6 @@
 // ID y contraseña predefinidos
-const adminID = "123"; // ID del administrador (se puede cambiar)
-const adminPassword = "admin123"; // Contraseña del administrador (se puede cambiar)
+const adminID = "123"; // ID del administrador 
+const adminPassword = "admin123"; // Contraseña del administrador 
 
 // Validación del formulario de inicio de sesión
 const form = document.getElementById("adminLoginForm");

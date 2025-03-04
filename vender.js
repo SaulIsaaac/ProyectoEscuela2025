@@ -1,4 +1,6 @@
-// Asignar la función de formateo al campo de precio
+// ============================
+// Formateo del campo de precio
+// ============================
 const priceInput = document.getElementById('precio');
 if (priceInput) {
   priceInput.addEventListener('input', function () {
@@ -20,7 +22,9 @@ if (priceInput) {
   });
 }
 
-// Función para formatear el kilometraje
+// ============================
+// Formateo del campo de kilometraje
+// ============================
 const kilometrajeInput = document.getElementById('kilometraje');
 if (kilometrajeInput) {
   kilometrajeInput.addEventListener('input', function () {
@@ -42,7 +46,9 @@ if (kilometrajeInput) {
   });
 }
 
-// Función para mostrar la imagen seleccionada
+// ============================
+// Mostrar imagen seleccionada
+// ============================
 function displayImage(event) {
   const file = event.target.files[0]; // Obtener el archivo desde el evento
   if (file) { // Verificar si el archivo existe
@@ -59,7 +65,9 @@ function displayImage(event) {
   }
 }
 
+// ============================
 // Manejo del formulario
+// ============================
 document.addEventListener("DOMContentLoaded", function () {
   console.log("📌 JS cargado correctamente");
 
@@ -83,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     idUsuarioInput.value = idUsuario;
   }
 
+  // Enviar formulario
   sellForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -102,16 +111,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const electricSelect = document.getElementById("electric");
     formData.append("electric", electricSelect.value); // El valor será 'Si' o 'No'
  
-     const imageInput = document.getElementById("imagen_url");
-     if (imageInput && imageInput.files.length > 0) {
-       formData.append("imagen_url", imageInput.files[0]);
-     }
+    const imageInput = document.getElementById("imagen_url");
+    if (imageInput && imageInput.files.length > 0) {
+      formData.append("imagen_url", imageInput.files[0]);
+    }
 
     // Depurar el contenido del FormData
     for (let [key, value] of formData.entries()) {
       console.log(`${key}: ${value}`);
     }
 
+    // Enviar el formulario con fetch
     fetch("http://localhost:3000/submit-form", {
       method: "POST",
       body: formData,
@@ -125,12 +135,12 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("❌ Ha ocurrido un error al enviar la solicitud. Por favor, inténtelo nuevamente.");
       }
     })
- 
-      .finally(() => {
-        isSubmitting = false;
-      });
+    .finally(() => {
+      isSubmitting = false;
+    });
   });
 
+  // Resetear formulario
   function resetForm() {
     sellForm.reset();
     const image = document.getElementById("vehicle-image");
@@ -145,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ============================
-// Boton de reset
+// Botón de reset
 // ============================
 document.addEventListener('DOMContentLoaded', function () {
   const resetButton = document.getElementById('resetButton'); // Selecciona el botón de reset
@@ -168,5 +178,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
-
