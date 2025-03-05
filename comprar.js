@@ -238,43 +238,48 @@ chequeOption.addEventListener('click', () => {
 // ============================
 // Modal de Pago con Tarjeta (PayPal)
 // ============================
+
+// Elementos del modal de pago con PayPal
 const paypalPaymentModal = document.getElementById('paypal-payment-modal'); // Modal de pago con PayPal
-const closePaypalPaymentModal = document.getElementById('close-paypal-payment-modal'); // Botón de cierre del modal de PayPal
-const cancelPaypalPayment = document.getElementById('cancel-paypal-payment'); // Botón para cancelar el pago de PayPal
+const closePaypalPaymentModal = document.getElementById('close-paypal-payment-modal'); // Botón para cerrar el modal de PayPal
+const cancelPaypalPayment = document.getElementById('cancel-paypal-payment'); // Botón para cancelar el pago y cerrar el modal
 
 // Al hacer clic en "Paga con Tarjeta" en el modal de efectivo, se abre el modal de PayPal
 cardOption1.addEventListener('click', function() {
     // Cierra el modal de pago en efectivo
     cashPaymentModal.style.display = 'none';
-    // Abre el modal de PayPal
+    // Muestra el modal de PayPal
     paypalPaymentModal.style.display = 'block';
     
-    // Renderiza el botón de PayPal dentro del contenedor solo si aún no se ha renderizado.
+    // Renderiza el botón de PayPal dentro del contenedor solo si aún no se ha creado
     if (!document.getElementById('paypal-button-rendered')) {
         if (typeof paypal !== 'undefined') {
+            // Configuración del botón de PayPal
             paypal.Buttons({
                 createOrder: function(data, actions) {
                     return actions.order.create({
                         purchase_units: [{
                             amount: {
-                                value: precioCarroSeleccionado // Precio a pagar 
+                                value: precioCarroSeleccionado // Precio del auto a pagar
                             }
                         }]
                     });
                 },
                 onApprove: function(data, actions) {
                     return actions.order.capture().then(function(details) {
+                        // Mensaje de confirmación después de un pago exitoso
                         alert('Pago exitoso, gracias ' + details.payer.name.given_name);
+                        // Cierra el modal de PayPal
                         paypalPaymentModal.style.display = 'none';
-                        // Aquí puedes agregar más acciones, como redirigir o actualizar la interfaz.
                     });
                 },
                 onError: function(err) {
+                    // Manejo de errores en el pago
                     console.error('Error en el pago', err);
                     alert("Hubo un error con el pago. Por favor, intente nuevamente.");
                 }
             }).render('#paypal-button-container').then(() => {
-                // Una vez renderizado, insertamos un marcador para evitar renderizar de nuevo.
+                // Agrega un marcador para evitar que el botón de PayPal se renderice varias veces
                 const marker = document.createElement('div');
                 marker.id = 'paypal-button-rendered';
                 document.getElementById('paypal-button-container').appendChild(marker);
@@ -285,22 +290,23 @@ cardOption1.addEventListener('click', function() {
     }
 });
 
-// Cerrar el modal de PayPal al hacer clic en el botón de cerrar
+// Evento para cerrar el modal de PayPal al hacer clic en el botón de cerrar
 closePaypalPaymentModal.addEventListener('click', function() {
     paypalPaymentModal.style.display = 'none';
 });
 
-// Cerrar el modal de PayPal al hacer clic en "Cancelar"
+// Evento para cerrar el modal de PayPal al hacer clic en el botón "Cancelar"
 cancelPaypalPayment.addEventListener('click', function() {
     paypalPaymentModal.style.display = 'none';
 });
 
-// Cerrar el modal de PayPal si se hace clic fuera del contenido
+// Evento para cerrar el modal de PayPal si el usuario hace clic fuera del contenido del modal
 paypalPaymentModal.addEventListener('click', function(event) {
     if (event.target === paypalPaymentModal) {
         paypalPaymentModal.style.display = 'none';
     }
 });
+
 
 
 // ============================
