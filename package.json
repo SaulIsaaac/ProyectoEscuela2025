@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SaulIsaaac/ProyectoEscuela2025#readme",
   "dependencies": {
+    "axios": "^1.8.1",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",

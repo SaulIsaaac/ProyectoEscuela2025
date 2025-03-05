@@ -213,139 +213,93 @@ document.addEventListener('keydown', (event) => {
 // Modal de pago en efectivo
 // ============================
 const cashPaymentModal = document.getElementById('cash-payment-modal'); // Modal de pago en efectivo
-const closeCashPaymentModal = document.getElementById('close-cash-payment-modal'); // Botón de cierre para el modal de pago en efectivo
-const cancelCashPayment = document.getElementById('cancel-cash-payment'); // Botón para cancelar el pago en efectivo
-const cardOption = document.getElementById('card-option'); // Botón para ir al pago con tarjeta en el modal de pago en efectivo
-const cashOption = document.getElementById('cash-option'); // Botón para pagar con efectivo
-const chequeOption = document.getElementById('cheque-option'); // Botón para pagar con cheque
+const closeCashPaymentModal = document.getElementById('close-cash-payment-modal'); // Botón de cierre del modal de pago en efectivo
+const cancelCashPayment = document.getElementById('cancel-cash-payment-1'); // Botón para cancelar el pago en efectivo
+const cashOption = document.getElementById('cash-option-1'); // Botón para pagar con efectivo
+const chequeOption = document.getElementById('cheque-option-1'); // Botón para pagar con cheque
+const cardOption1 = document.getElementById('card-option-1'); // Botón para pagar con tarjeta (trigger para PayPal modal)
 
-// Manejo del modal de pago en efectivo
+// Cerrar el modal de pago en efectivo
 closeCashPaymentModal.addEventListener('click', () => {
     cashPaymentModal.style.display = 'none';
 });
-
 cancelCashPayment.addEventListener('click', () => {
     cashPaymentModal.style.display = 'none';
 });
 
-// Manejo del botón de pago con tarjeta desde el modal de pago en efectivo
-cardOption.addEventListener('click', () => {
-    cashPaymentModal.style.display = 'none';  // Cierra el modal de pago en efectivo
-    creditCardPayModal.style.display = 'block'; // Abre el modal de pago con tarjeta
-});
-
-// Alerta para pago en efectivo o cheque
+// Alertas para efectivo y cheque
 cashOption.addEventListener('click', () => {
     alert('Por favor, dirígete a una sucursal para completar la transacción.');
 });
-
 chequeOption.addEventListener('click', () => {
     alert('Por favor, dirígete a una sucursal para completar la transacción.');
 });
 
-//Funcion de cerrar el menu con la tecla ESC 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        // Verificar si el modal está abierto
-        if (cashPaymentModal.style.display === 'block' || cashPaymentModal.style.display === 'flex') {
-            cashPaymentModal.style.display = 'none'; // Cerrar el modal
-        }
-    }
-});
-
 // ============================
-// Modal de pago con tarjeta
+// Modal de Pago con Tarjeta (PayPal)
 // ============================
-const creditCardPayModal = document.getElementById('credit-card-pay-modal'); // Modal de pago con tarjeta
-const closeCreditCardPayModal = document.getElementById('close-credit-card-pay-modal'); // Botón para cerrar el modal de pago con tarjeta
-const payWithCardButton = document.getElementById('pay-with-card-button'); // Botón para pagar con tarjeta
-const cancelCardPaymentButton = document.getElementById('cancel-card-payment-button'); // Botón para cancelar el pago con tarjeta
+const paypalPaymentModal = document.getElementById('paypal-payment-modal'); // Modal de pago con PayPal
+const closePaypalPaymentModal = document.getElementById('close-paypal-payment-modal'); // Botón de cierre del modal de PayPal
+const cancelPaypalPayment = document.getElementById('cancel-paypal-payment'); // Botón para cancelar el pago de PayPal
 
-// Obtener todos los campos del formulario
-const paymentCardForm = document.getElementById('payment-card-form');
-const cardNumberField = document.getElementById('card-number');
-const cvvField = document.getElementById('cvv');
-
-// Manejo del modal de pago con tarjeta
-closeCreditCardPayModal.addEventListener('click', () => {
-    closeCreditCardModalAndResetForm();
-});
-
-// Validación de los campos del formulario antes de proceder con el pago
-function validateForm() {
-    const fields = paymentCardForm.querySelectorAll('select[required], input[required]');
-    for (let field of fields) {
-        if (!field.value) {
-            alert('Por favor, rellena todos los campos antes de proceder.');
-            return false;
-        }
-    }
-
-    // Validación para el número de tarjeta (16 caracteres)
-    if (cardNumberField.value.length !== 16) {
-        alert('El número de tarjeta debe tener exactamente 16 dígitos.');
-        return false;
-    }
-
-    // Validación para el CVV (3 caracteres)
-    if (cvvField.value.length !== 3) {
-        alert('El CVV debe tener exactamente 3 dígitos.');
-        return false;
-    }
-
-    return true;
-}
-
-// Acción cuando el usuario hace clic en el botón para pagar con tarjeta
-payWithCardButton.addEventListener('click', () => {
-    if (validateForm()) {
-        closeCreditCardModalAndResetForm();  // Reiniciar los valores al pagar
-        creditCardPayModal.style.display = 'none'; // Cerrar el modal de pago con tarjeta
-        paymentConfirmationModal.style.display = 'block'; // Abrir el modal de confirmación de pago
-    }
-});
-
-cancelCardPaymentButton.addEventListener('click', () => {
-    closeCreditCardModalAndResetForm();
-});
-
-// Cerrar el modal de pago con tarjeta con la tecla ESC
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        // Verificar si el modal está abierto
-        if (creditCardPayModal.style.display === 'block' || creditCardPayModal.style.display === 'flex') {
-            closeCreditCardModalAndResetForm();
+// Al hacer clic en "Paga con Tarjeta" en el modal de efectivo, se abre el modal de PayPal
+cardOption1.addEventListener('click', function() {
+    // Cierra el modal de pago en efectivo
+    cashPaymentModal.style.display = 'none';
+    // Abre el modal de PayPal
+    paypalPaymentModal.style.display = 'block';
+    
+    // Renderiza el botón de PayPal dentro del contenedor solo si aún no se ha renderizado.
+    if (!document.getElementById('paypal-button-rendered')) {
+        if (typeof paypal !== 'undefined') {
+            paypal.Buttons({
+                createOrder: function(data, actions) {
+                    return actions.order.create({
+                        purchase_units: [{
+                            amount: {
+                                value: precioCarroSeleccionado // Precio a pagar 
+                            }
+                        }]
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        alert('Pago exitoso, gracias ' + details.payer.name.given_name);
+                        paypalPaymentModal.style.display = 'none';
+                        // Aquí puedes agregar más acciones, como redirigir o actualizar la interfaz.
+                    });
+                },
+                onError: function(err) {
+                    console.error('Error en el pago', err);
+                    alert("Hubo un error con el pago. Por favor, intente nuevamente.");
+                }
+            }).render('#paypal-button-container').then(() => {
+                // Una vez renderizado, insertamos un marcador para evitar renderizar de nuevo.
+                const marker = document.createElement('div');
+                marker.id = 'paypal-button-rendered';
+                document.getElementById('paypal-button-container').appendChild(marker);
+            });
+        } else {
+            console.error("El SDK de PayPal no está cargado.");
         }
     }
 });
 
-// Función para cerrar el modal y resetear el formulario
-function closeCreditCardModalAndResetForm() {
-    creditCardPayModal.style.display = 'none'; // Cerrar el modal de pago con tarjeta
-    // Resetear los valores del formulario
-    paymentCardForm.reset();
-}
+// Cerrar el modal de PayPal al hacer clic en el botón de cerrar
+closePaypalPaymentModal.addEventListener('click', function() {
+    paypalPaymentModal.style.display = 'none';
+});
 
-    // ============================
-    // Modal de confirmación de pago
-     // ============================
-  const paymentConfirmationModal = document.getElementById('payment-confirmation-modal'); // Modal de confirmación de pago
-  const closePaymentConfirmationModal = document.getElementById('close-payment-confirmation-modal'); // Botón para cerrar el modal de confirmación de pago
-  const confirmPayment = document.getElementById('confirm-payment'); // Botón para confirmar el pago
-  const rejectPayment = document.getElementById('reject-payment'); // Botón para rechazar el pago
+// Cerrar el modal de PayPal al hacer clic en "Cancelar"
+cancelPaypalPayment.addEventListener('click', function() {
+    paypalPaymentModal.style.display = 'none';
+});
 
-  // Manejo del modal de confirmación de pago
-  closePaymentConfirmationModal.addEventListener('click', () => {
-      paymentConfirmationModal.style.display = 'none'; // Cerrar el modal de confirmación de pago
-  });
-
-  rejectPayment.addEventListener('click', () => {
-      paymentConfirmationModal.style.display = 'none'; // Cerrar el modal de confirmación de pago
-  });
-
-  confirmPayment.addEventListener("click", () => {
-    alert("✅ Su pago ha sido procesado con éxito. Por favor, diríjase a una de nuestras sucursales para continuar con el procedimiento correspondiente.");
-    paymentConfirmationModal.style.display = "none"; // Cerrar el modal de confirmación de pago
+// Cerrar el modal de PayPal si se hace clic fuera del contenido
+paypalPaymentModal.addEventListener('click', function(event) {
+    if (event.target === paypalPaymentModal) {
+        paypalPaymentModal.style.display = 'none';
+    }
 });
 
 

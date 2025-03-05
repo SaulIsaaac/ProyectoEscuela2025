@@ -564,20 +564,19 @@ header {
   top: 50%; /* Centramos verticalmente */
   left: 50%; /* Centramos horizontalmente */
   transform: translate(-50%, -50%); /* Ajusta el centro del modal */
-  width: 50%; /* Ancho más amplio para darle una sensación de amplitud */
-  max-width: 700px; /* Ancho máximo */
+  width: 40%; /* Ancho más amplio para darle una sensación de amplitud */
+  height: 45%;
   padding: 40px;
   background-color: #2c2c2c; /* Fondo gris oscuro (negro claro) */
   box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3); /* Sombra más suave */
   border-radius: 12px; /* Bordes más suaves */
   z-index: 1000;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; /* Centra el modal verticalmente */
   animation: fadeIn 0.3s ease-out;
-  height: 45%; /* Aumentamos la altura del modal */
   filter: blur(0); /* No hay desenfoque inicial */
 }
 
@@ -1366,8 +1365,6 @@ header {
   background-color: #0056b3;
 }
 
-
-
 /* Todos los modales deben estar ocultos por defecto */
 #modal-details,
 #payment-options-modal,
@@ -1377,3 +1374,4 @@ header {
 #modal-pagar-mensualidades {
   display: none; /* Los modales estarán ocultos al cargar la página */
 }
+

@@ -67,114 +67,41 @@
 </div>
 
 
-<!-- Modal for Cash Payment -->
-<div id="cash-payment-modal" class="modal-payment">
+<!-- Modal para Pago en Efectivo -->
+<div id="cash-payment-modal" class="modal-payment" style="display: none;">
   <div class="modal-content-payment">
     <span id="close-cash-payment-modal" class="close-modal-payment">&#10005;</span>
     <h2>Pago de Contado</h2>
     <div id="payment-options">
-      <button id="cash-option" class="btn-payment">
+      <button id="cash-option-1" class="btn-payment">
         Paga con efectivo
         <p class="small-text">Realiza tu pago en efectivo.</p>
       </button>
-      <button id="card-option" class="btn-payment">
-          Paga con Tarjeta
-        <p class="small-text">Paga con tu tarjeta de crédito o débito.</p>
+      <button id="card-option-1" class="btn-payment">
+        Paga con Tarjeta
+        <p class="small-text">Paga con tu tarjeta de crédito o débito desde la app de PayPal.</p>
       </button>
-      <button id="cheque-option" class="btn-payment">
+      <button id="cheque-option-1" class="btn-payment">
         Paga con cheque 
         <p class="small-text">Usa cheque para tu pago.</p>
       </button>
-      <button id="cancel-cash-payment" class="btn-payment">Cancelar</button>
+      <button id="cancel-cash-payment-1" class="btn-payment">Cancelar</button>
     </div>
   </div>
 </div>
 
-
-<!-- Modal de Pago con Tarjeta -->
-<div id="credit-card-pay-modal" class="modal-credit-card-pay">
-  <div class="modal-content-credit-card-pay">
-    <span id="close-credit-card-pay-modal" class="close-modal-credit-card-pay">&times;</span>
-    <h2>Pago con Tarjeta</h2>
-    <form id="payment-card-form">
-      <label for="card-type">Tipo de tarjeta:</label>
-      <select id="card-type" name="card-type" required>
-        <option value="credit">Crédito</option>
-        <option value="debit">Débito</option>
-      </select>
-
-      <label for="card-brand">Marca de la tarjeta:</label>
-      <select id="card-brand" name="card-brand" required>
-        <option value="visa">Visa</option>
-        <option value="mastercard">MasterCard</option>
-      </select>
-
-      <label for="card-number">Número de tarjeta:</label>
-      <input type="text" id="card-number" name="card-number" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="16" minlength="16" required>
-
-      <div class="expiry-date-container">
-        <!-- Campo para seleccionar el mes -->
-        <label for="expiry-month">Mes:</label>
-        <select id="expiry-month" name="expiry-month" required>
-          <option value="" disabled selected>Seleccionar mes</option>
-          <option value="01">01</option>
-          <option value="02">02</option>
-          <option value="03">03</option>
-          <option value="04">04</option>
-          <option value="05">05</option>
-          <option value="06">06</option>
-          <option value="07">07</option>
-          <option value="08">08</option>
-          <option value="09">09</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-        </select>
-    
-        <!-- Campo para seleccionar el año -->
-        <label for="expiry-year">Año:</label>
-        <select id="expiry-year" name="expiry-year" required>
-          <option value="" disabled selected>Seleccionar año</option>
-          <option value="2025">2025</option>
-          <option value="2026">2026</option>
-          <option value="2027">2027</option>
-          <option value="2028">2028</option>
-          <option value="2029">2029</option>
-          <option value="2030">2030</option>
-          <option value="2031">2031</option>
-          <option value="2032">2032</option>
-          <option value="2033">2033</option>
-          <option value="2034">2034</option>
-          <option value="2035">2035</option>
-        </select>
-      </div> <!-- Esta etiqueta estaba sin cerrar -->
-      
-      <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" name="cvv" maxlength="3" minlength="3" required>
-
-      <!-- Botón Pagar con tarjeta -->
-      <button type="button" id="pay-with-card-button" class="btn-pay-card">Pagar</button>
-
-      <!-- Botón Cancelar -->
-      <button type="button" id="cancel-card-payment-button" class="btn-cancel-card">Cancelar</button>
-    </form>
+<!-- Modal para Pago con Tarjeta (PayPal) -->
+<div id="paypal-payment-modal" class="modal-payment" style="display: none;">
+  <div class="modal-content-payment">
+    <span id="close-paypal-payment-modal" class="close-modal-payment">&#10005;</span>
+    <h2>Pago con PayPal</h2>
+    <!-- Contenedor para el botón de PayPal -->
+    <div id="paypal-button-container"></div>
+    <button id="cancel-paypal-payment" class="btn-payment">Cancelar</button>
   </div>
 </div>
 
-<!-- Modal de Confirmación de Pago -->
-<div id="payment-confirmation-modal" class="modal-payment-confirmation">
-  <div class="modal-content-payment-confirmation">
-    <span id="close-payment-confirmation-modal" class="close-modal-payment-confirmation">&times;</span>
-    <h2>Confirmación de Pago</h2>
-    <p id="confirmation-message">¿Estas seguro que quieres realizar el pago por este carro? </p>
 
-    <!-- Botones de confirmación y rechazo -->
-    <div class="modal-buttons">
-      <button type="button" id="confirm-payment" class="btn-confirm-payment">Confirmar</button>
-      <button type="button" id="reject-payment" class="btn-reject-payment">Rechazar</button>
-    </div>
-  </div>
-</div>
 
 
 <!-- Modal de Pagar a Mensualidades -->
@@ -216,6 +143,8 @@
 
   <!-- Script para cargar autos y manejar la paginación -->
   <script src="comprar.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=AXZETyWglYc_TkE1GeQBPLpF54l6urV-0ba_Myp2wChuMV6i4QqwemGxS-7h1l47ppsDkGFVRGH0aHyR"></script>
+
 
 </body>
 </html>
